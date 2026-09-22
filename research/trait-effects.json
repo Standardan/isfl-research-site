@@ -1,0 +1,184 @@
+{
+  "Athlete": {
+    "summary": "Movement multiplier: ×1.01 while a non-QB carries a completed pass; ×1.02 on RB/FB runs; ×1.05 on QB runs/scrambles and pass blitzes.",
+    "source": "Player.cs:2141,2237,2321,2393,2445; tests-traits/stock-movement-traits.csv",
+    "limits": "Context-specific movement, not a universal speed increase. Independent movement traits multiply. Do not purchase a duplicate of an automatic trait.",
+    "modeled": "Context-blended movement multipliers.",
+    "unmodeled": "Actual workload, role frequency and RunningQB export state are not measured."
+  },
+  "BionicLeg": {
+    "summary": "Portal upgrade raises the kick-power cap another five points, to 100.",
+    "source": "engine-data.json; engine.js UNLOCKS and DEPENDENCIES",
+    "limits": "Requires SteelToeBoots and listed attribute prerequisites. Cap unlock only: additional ratings still cost TPE. No identically named stock game trait.",
+    "modeled": "Kick-power cap unlock and prerequisite costs.",
+    "unmodeled": "No invented direct game-trait bonus."
+  },
+  "BlockingFB": {
+    "summary": "Adds 10 to the blocking engagement threshold when the player is a fullback; reduces fullback target-selection weight by 10, with a floor of one.",
+    "source": "Player.cs:273; GameFunctions.cs:4010",
+    "limits": "Position-gated. A blocking benefit also changes receiving opportunities; threshold points are not percentage points of team win probability.",
+    "modeled": "FB blocking threshold contribution.",
+    "unmodeled": "Reduced receiving target weight."
+  },
+  "BlockingTE": {
+    "summary": "Adds 10 to the blocking engagement threshold when the player is a tight end; reduces tight-end target-selection weight by 10, with a floor of one.",
+    "source": "Player.cs:269; GameFunctions.cs:4006",
+    "limits": "Position-gated. Stacks with independent blocking traits. Reduced receiving opportunities are not necessarily beneficial.",
+    "modeled": "TE blocking threshold contribution.",
+    "unmodeled": "Reduced receiving target weight."
+  },
+  "BoxSafety": {
+    "summary": "Adds one or two to run-recognition thresholds in specified branches; multiplies strong-safety tackle score by 1.03 on runs when the near-line condition passes.",
+    "source": "GameFunctions.cs:5535,5571,5781,9825",
+    "limits": "Recognition bonuses participate in precedence chains. Tackle benefit requires SS position and tackler Y minus ball Y below 25 field units.",
+    "modeled": "Cover-action run-recognition threshold in a declared scenario.",
+    "unmodeled": "Near-line SS tackle multiplier and other recognition branches."
+  },
+  "BullRusher": {
+    "summary": "Subtracts 10 from the opposing blocker's engagement threshold and multiplies movement by 1.05 while blitzing a pass.",
+    "source": "Player.cs:289,2149; tests-traits/stock-movement-traits.csv",
+    "limits": "Blocking and blitz contexts only. Stacks independently with SpeedRusher. Do not purchase a duplicate automatic trait.",
+    "modeled": "Opposing blocking threshold and conditional blitz movement.",
+    "unmodeled": "Actual pass-rush opportunity and opponent context."
+  },
+  "CenterFielder": {
+    "summary": "Stock Centerfielder reduces the interception comparison modifier by one; also changes passes-defensed credit after a failed catch.",
+    "source": "GameFunctions.cs:6790,9523",
+    "limits": "Portal spelling differs from stock enum Centerfielder. Perceptive takes precedence; the credit bonus does not prevent a completion. Interception effects depend on integer-rounded joint scores.",
+    "modeled": "Interception modifier with Perceptive precedence in a separable coverage approximation.",
+    "unmodeled": "Joint integer rounding and post-failure statistical credit."
+  },
+  "Competitor": {
+    "summary": "Prevents the competitiveness-dependent 10% tackle-score reduction after at least five recorded tackles.",
+    "source": "GameFunctions.cs:6794,9810,9814",
+    "limits": "The separate reduction after eight tackles remains. Benefit depends on competitiveness and workload; passes-defensed credit is attribution only. Integer truncation applies.",
+    "modeled": "Competitiveness-dependent tackle-fatigue resilience approximation.",
+    "unmodeled": "Recorded tackle workload, integer rounding and statistical credit."
+  },
+  "DeepThreat": {
+    "summary": "Adds 10 to deep-target selection weight and multiplies movement by 1.01 while carrying a completed pass.",
+    "source": "GameFunctions.cs:4018; Player.cs:2241; tests-traits/stock-movement-traits.csv",
+    "limits": "Does not supply a universal route-speed or catch-probability bonus. Additional deep targets are strategy-dependent. Do not purchase a duplicate automatic trait.",
+    "modeled": "Conditional pass-ballcarrier movement.",
+    "unmodeled": "Deep-target selection weighting and third-down selection."
+  },
+  "Dualthreat": {
+    "summary": "Multiplies QB run/scramble movement by 1.05, adds 30 to scramble tendency, and supplies a 1.05 resistance multiplier in the QB-run branch.",
+    "source": "Player.cs:2397,2449; GameFunctions.cs:6952,9742,9952",
+    "limits": "RunningQB is a separate flag: its overlapping movement/resistance multiplier does not stack with this trait, while scramble tendency can stack. Game plans can override tendency.",
+    "modeled": "Conditional QB run/scramble movement.",
+    "unmodeled": "Resistance, scramble tendency and separate RunningQB flag."
+  },
+  "GameManager": {
+    "summary": "Adds four to the QB interception random-range parameter and adds min(5, intelligence/15) to a throwaway decision threshold.",
+    "source": "GameFunctions.cs:7516,9581",
+    "limits": "FilmGeek takes precedence in the interception chain and supplies two instead. This is not a four-percentage-point reduction in interceptions.",
+    "modeled": "Interception range bonus with FilmGeek precedence, compared with attribute range tiers.",
+    "unmodeled": "Throwaway behavior and full nonlinear interception probability."
+  },
+  "Gunslinger": {
+    "summary": "Adds five to a deep-throw preference accumulator when deep consideration is allowed.",
+    "source": "GameFunctions.cs:6502",
+    "limits": "Fourth down and field position can disable this branch. A preference change has no established positive win value without the surrounding strategy and roster.",
+    "modeled": "No positive score assigned.",
+    "unmodeled": "Deep-throw preference has no assumed universal benefit."
+  },
+  "LaserSights": {
+    "summary": "Portal upgrade raises the kick-accuracy cap another five points, to 100.",
+    "source": "engine-data.json; engine.js UNLOCKS and DEPENDENCIES",
+    "limits": "Requires StraightShooter and listed attribute prerequisites. Cap unlock only: additional ratings still cost TPE. No identically named stock game trait.",
+    "modeled": "Kick-accuracy cap unlock and prerequisite costs.",
+    "unmodeled": "No invented direct game-trait bonus."
+  },
+  "Perceptive": {
+    "summary": "Adds four or five to specified run-recognition thresholds and reduces the interception comparison modifier by three.",
+    "source": "GameFunctions.cs:5531,5567,5773,9519",
+    "limits": "Branch-dependent recognition; takes precedence over Centerfielder and Legend in interception calculation. Modifier effects depend on joint integer-rounded scores.",
+    "modeled": "Cover-action recognition scenario and precedence-aware interception modifier.",
+    "unmodeled": "Other recognition branches and joint integer rounding."
+  },
+  "PressCorner": {
+    "summary": "Adds one to specified run-recognition thresholds; also changes passes-defensed credit after a failed catch.",
+    "source": "GameFunctions.cs:5539,5575,6798",
+    "limits": "Earlier Perceptive or BoxSafety branches take precedence. Credit attribution is not evidence of preventing the completion.",
+    "modeled": "Cover-action recognition threshold and precedence.",
+    "unmodeled": "Other recognition branches and statistical-credit changes."
+  },
+  "RawTalent": {
+    "summary": "Multiplies RB/FB rushing movement by 1.02.",
+    "source": "Player.cs:2329; tests-traits/stock-movement-traits.csv",
+    "limits": "Role and play context apply; no universal attribute increase. Independent movement multipliers stack.",
+    "modeled": "Conditional RB/FB rushing movement.",
+    "unmodeled": "Actual rushing frequency."
+  },
+  "ReceivingTE": {
+    "summary": "Adds two to tight-end target-selection weight and multiplies pass-ballcarrier movement by 1.05.",
+    "source": "GameFunctions.cs:4002,6719; Player.cs:2253; tests-traits/stock-movement-traits.csv",
+    "limits": "Its drop-threshold reduction labels an already failed pass and does not create a catch. Receiving-trait attribution bonuses use an else-if chain.",
+    "modeled": "Conditional pass-ballcarrier movement.",
+    "unmodeled": "Target selection and failed-pass attribution."
+  },
+  "RoleModel": {
+    "summary": "Reduces the penalty threshold by 10 for the randomly selected player, the same local threshold change as 10 intelligence points.",
+    "source": "GameFunctions.cs:10055,10104,10124",
+    "limits": "BadInfluence, Diva and MediaDarling take precedence. This is not an overall intelligence increase; selection, random ranges and penalty eligibility still apply.",
+    "modeled": "Penalty-resistance intelligence subtotal with trait precedence.",
+    "unmodeled": "Actual player selection, penalty denominator and matchup context."
+  },
+  "ScatBack": {
+    "summary": "Multiplies pass-ballcarrier movement by 1.01 and RB/FB rushing movement by 1.02; increases automatic third-down-back selection preference.",
+    "source": "Player.cs:2257,2333; Libraries/GamePlan.cs:396; tests-traits/stock-movement-traits.csv",
+    "limits": "Movement benefits require their respective contexts. Selection preference is not a per-play performance multiplier.",
+    "modeled": "Conditional rushing and pass-ballcarrier movement.",
+    "unmodeled": "Third-down selection."
+  },
+  "ShutDownCorner": {
+    "summary": "Adds 15 to a passes-defensed credit accumulator after a failed catch.",
+    "source": "GameFunctions.cs:6802",
+    "limits": "This branch assigns statistical credit; it does not prevent the completion. No direct completion-prevention benefit was verified, so it has no modeled prevention value.",
+    "modeled": "No completion-prevention score assigned.",
+    "unmodeled": "Post-failure passes-defensed credit; no verified prevention effect."
+  },
+  "SlotCorner": {
+    "summary": "Multiplies pass-blitz movement by 1.05; changes a run-ballcarrier path threshold from 25 to 15.",
+    "source": "Player.cs:2153; GameFunctions.cs:5669; tests-traits/stock-movement-traits.csv",
+    "limits": "The run-path source genuinely names SlotCorner, not SlotReceiver. That ballcarrier branch is not an ordinary corner coverage benefit.",
+    "modeled": "Conditional pass-blitz movement.",
+    "unmodeled": "Run-ballcarrier path decision."
+  },
+  "SlotReceiver": {
+    "summary": "Multiplies pass-ballcarrier movement by 1.01 and changes a pass-ballcarrier path threshold from 25 to 15.",
+    "source": "Player.cs:2261; GameFunctions.cs:7025; tests-traits/stock-movement-traits.csv",
+    "limits": "These effects occur with the ball, not as a universal route-running bonus. Path outcomes also depend on intelligence, endurance, agility and speed.",
+    "modeled": "Conditional pass-ballcarrier movement.",
+    "unmodeled": "Pass-ballcarrier path decision."
+  },
+  "SpeedRusher": {
+    "summary": "Subtracts 10 from the opposing blocker's engagement threshold and multiplies pass-blitz movement by 1.05.",
+    "source": "Player.cs:285,2145; tests-traits/stock-movement-traits.csv",
+    "limits": "Blocking and blitz contexts only. Stacks independently with BullRusher. Do not purchase a duplicate automatic trait.",
+    "modeled": "Opposing blocking threshold and conditional blitz movement.",
+    "unmodeled": "Actual pass-rush opportunity and opponent context."
+  },
+  "SteelToeBoots": {
+    "summary": "Portal upgrade raises the kick-power cap five points, to 95.",
+    "source": "engine-data.json; engine.js UNLOCKS and DEPENDENCIES",
+    "limits": "Listed prerequisites must be met. Cap unlock only: additional ratings still cost TPE. Required before BionicLeg; no identically named stock game trait.",
+    "modeled": "Kick-power cap unlock and prerequisite costs.",
+    "unmodeled": "No invented direct game-trait bonus."
+  },
+  "StraightShooter": {
+    "summary": "Portal upgrade raises the kick-accuracy cap five points, to 95.",
+    "source": "engine-data.json; engine.js UNLOCKS and DEPENDENCIES",
+    "limits": "Listed prerequisites must be met. Cap unlock only: additional ratings still cost TPE. Required before LaserSights; no identically named stock game trait.",
+    "modeled": "Kick-accuracy cap unlock and prerequisite costs.",
+    "unmodeled": "No invented direct game-trait bonus."
+  },
+  "TenaciousBlocker": {
+    "summary": "Adds 10 to the blocking engagement threshold.",
+    "source": "Player.cs:281",
+    "limits": "Stacks with AthBlocker and applicable position-specific blocking traits. The comparison still depends on the opponent, random roll and other modifiers; not a ten-percent win gain.",
+    "modeled": "Blocking threshold contribution.",
+    "unmodeled": "Actual opponent, contact opportunity and random-roll clamping."
+  }
+}
