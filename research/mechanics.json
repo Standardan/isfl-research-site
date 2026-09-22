@@ -1,0 +1,4137 @@
+{
+  "schema_version": "1.0",
+  "game": "DDSPF21",
+  "assembly_version": "5.0.11.0",
+  "purpose": "LLM retrieval: exact local mechanics and complete field/trait indices",
+  "notation": {
+    "R": "inclusive integer draw; min>=max returns min",
+    "E": "Endurance in endurance facts; Energy is current state",
+    "trunc": "toward zero",
+    "roundEven": "nearest integer, ties to even"
+  },
+  "evidence_policy": {
+    "source_proven": "Local expression with source citation",
+    "reviewed_source_audit": "Condensed reviewed use inventory; scope is not a complete executable function",
+    "examples": "Arithmetic or application examples, not additional empirical trials",
+    "trait_absence": "No direct named effect means none was identified in reviewed searchable source; it does not establish a hidden bonus or prove global inactivity."
+  },
+  "core_fields": [
+    {
+      "name": "Strength",
+      "path": "Attributes.Strength",
+      "fact_ids": [
+        "rating.getters",
+        "speed.heavy-runner",
+        "strength.release",
+        "contact.runner",
+        "contact.defender",
+        "contact.final",
+        "blocking.pass",
+        "blocking.run"
+      ]
+    },
+    {
+      "name": "Agility",
+      "path": "Attributes.Agility",
+      "fact_ids": [
+        "rating.getters",
+        "agility.recovery",
+        "agility.receiver",
+        "contact.runner",
+        "contact.defender",
+        "blocking.pass",
+        "blocking.run",
+        "interception.composite",
+        "return.kickoff",
+        "competitiveness.recovery"
+      ]
+    },
+    {
+      "name": "Speed",
+      "path": "Attributes.Speed",
+      "fact_ids": [
+        "rating.getters",
+        "speed.base",
+        "speed.heavy-runner",
+        "speed.receiving-rb",
+        "speed.scramble",
+        "contact.runner",
+        "contact.defender",
+        "interception.composite",
+        "return.kickoff"
+      ]
+    },
+    {
+      "name": "Hands",
+      "path": "Attributes.Hands",
+      "fact_ids": [
+        "rating.getters",
+        "blocking.pass",
+        "hands.catch",
+        "hands.penalty-cliffs",
+        "hands.targeting",
+        "hands.fumble",
+        "drop.attribution",
+        "skills.drop",
+        "interception.composite"
+      ]
+    },
+    {
+      "name": "Intelligence",
+      "path": "Attributes.Intelligence",
+      "fact_ids": [
+        "rating.getters",
+        "contact.runner",
+        "contact.defender",
+        "blocking.run",
+        "intelligence.interception",
+        "intelligence.decisions",
+        "accuracy.pass",
+        "punt.control",
+        "skills.lb",
+        "interception.composite",
+        "teamplay.sum"
+      ]
+    },
+    {
+      "name": "Tackling",
+      "path": "Attributes.Tackling",
+      "fact_ids": [
+        "rating.getters",
+        "contact.defender",
+        "contact.final",
+        "blocking.pass",
+        "blocking.run"
+      ]
+    },
+    {
+      "name": "PassBlocking",
+      "path": "Attributes.PassBlocking",
+      "fact_ids": [
+        "rating.getters",
+        "blocking.pass",
+        "blocking.team-pass",
+        "blocking.success"
+      ]
+    },
+    {
+      "name": "RunBlocking",
+      "path": "Attributes.RunBlocking",
+      "fact_ids": [
+        "rating.getters",
+        "blocking.run",
+        "blocking.success"
+      ]
+    },
+    {
+      "name": "Endurance",
+      "path": "Attributes.Endurance",
+      "fact_ids": [
+        "rating.getters",
+        "endurance.loss",
+        "endurance.recovery",
+        "endurance.order",
+        "endurance.carry",
+        "endurance.catch",
+        "endurance.action",
+        "endurance.workload",
+        "injury.gates",
+        "substitution.energy",
+        "competitiveness.long-gain"
+      ]
+    },
+    {
+      "name": "Arm",
+      "path": "Attributes.Arm",
+      "fact_ids": [
+        "rating.getters",
+        "arm.interception",
+        "arm.deep",
+        "interception.composite"
+      ]
+    },
+    {
+      "name": "Accuracy",
+      "path": "Attributes.Accuracy",
+      "fact_ids": [
+        "rating.getters",
+        "accuracy.pass",
+        "accuracy.interception",
+        "interception.composite"
+      ]
+    },
+    {
+      "name": "KickAccuracy",
+      "path": "Attributes.KickAccuracy",
+      "fact_ids": [
+        "rating.getters",
+        "kicking.fg",
+        "kicking.xp",
+        "punt.control",
+        "skills.kick",
+        "punt.distance"
+      ]
+    },
+    {
+      "name": "KickDistance",
+      "path": "Attributes.KickDistance",
+      "fact_ids": [
+        "rating.getters",
+        "kicking.fg",
+        "kicking.selection",
+        "punt.distance",
+        "kickoff.distance"
+      ]
+    },
+    {
+      "name": "Competitiveness",
+      "path": "Personality.Competitiveness",
+      "fact_ids": [
+        "competitiveness.receiving",
+        "competitiveness.fatigue",
+        "competitiveness.fumble",
+        "personality.Competitiveness",
+        "competitiveness.long-gain",
+        "competitiveness.overtime",
+        "competitiveness.recovery"
+      ]
+    }
+  ],
+  "personality_fields": [
+    {
+      "name": "Competitiveness",
+      "path": "Personality.Competitiveness",
+      "fact_ids": [
+        "competitiveness.receiving",
+        "competitiveness.fatigue",
+        "competitiveness.fumble",
+        "personality.Competitiveness",
+        "competitiveness.long-gain",
+        "competitiveness.overtime",
+        "competitiveness.recovery"
+      ]
+    },
+    {
+      "name": "Leadership",
+      "path": "Personality.Leadership",
+      "fact_ids": [
+        "personality.Leadership",
+        "teamplay.sum"
+      ]
+    },
+    {
+      "name": "WorkEthic",
+      "path": "Personality.WorkEthic",
+      "fact_ids": [
+        "personality.WorkEthic",
+        "teamplay.sum"
+      ]
+    },
+    {
+      "name": "TeamPlayer",
+      "path": "Personality.TeamPlayer",
+      "fact_ids": [
+        "personality.TeamPlayer",
+        "teamplay.sign",
+        "teamplay.sum"
+      ]
+    },
+    {
+      "name": "Sportsmanship",
+      "path": "Personality.Sportsmanship",
+      "fact_ids": [
+        "personality.Sportsmanship"
+      ]
+    },
+    {
+      "name": "SocialDisposition",
+      "path": "Personality.SocialDisposition",
+      "fact_ids": [
+        "personality.SocialDisposition"
+      ]
+    },
+    {
+      "name": "Money",
+      "path": "Personality.Money",
+      "fact_ids": [
+        "personality.Money"
+      ]
+    },
+    {
+      "name": "Security",
+      "path": "Personality.Security",
+      "fact_ids": [
+        "personality.Security"
+      ]
+    },
+    {
+      "name": "Loyalty",
+      "path": "Personality.Loyalty",
+      "fact_ids": [
+        "personality.Loyalty"
+      ]
+    },
+    {
+      "name": "Winning",
+      "path": "Personality.Winning",
+      "fact_ids": [
+        "personality.Winning"
+      ]
+    },
+    {
+      "name": "PlayingTime",
+      "path": "Personality.PlayingTime",
+      "fact_ids": [
+        "personality.PlayingTime"
+      ]
+    },
+    {
+      "name": "CloseToHome",
+      "path": "Personality.CloseToHome",
+      "fact_ids": [
+        "personality.CloseToHome"
+      ]
+    },
+    {
+      "name": "MarketSize",
+      "path": "Personality.MarketSize",
+      "fact_ids": [
+        "personality.MarketSize"
+      ]
+    },
+    {
+      "name": "Morale",
+      "path": "Personality.Morale",
+      "fact_ids": [
+        "personality.Morale"
+      ]
+    }
+  ],
+  "position_skills": [
+    {
+      "name": "QB",
+      "path": "Skills.QB",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.qb-pass",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "RB",
+      "path": "Skills.RB",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.run",
+        "skills.pass-carry",
+        "skills.drop",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "FB",
+      "path": "Skills.FB",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.run",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "WR",
+      "path": "Skills.WR",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.pass-carry",
+        "skills.drop",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "TE",
+      "path": "Skills.TE",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.pass-carry",
+        "skills.drop",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "G",
+      "path": "Skills.G",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "T",
+      "path": "Skills.T",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "C",
+      "path": "Skills.C",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "P",
+      "path": "Skills.P",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.kick",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "K",
+      "path": "Skills.K",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.kick",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "DT",
+      "path": "Skills.DT",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "DE",
+      "path": "Skills.DE",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "LB",
+      "path": "Skills.LB",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.lb",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "CB",
+      "path": "Skills.CB",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "SS",
+      "path": "Skills.SS",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    },
+    {
+      "name": "FS",
+      "path": "Skills.FS",
+      "fact_ids": [
+        "skills.common-penalty",
+        "skills.contact",
+        "skills.movement",
+        "skills.extra"
+      ],
+      "source": {
+        "path": "Headless/_reference/Player.cs",
+        "lines": "9317-9453"
+      }
+    }
+  ],
+  "traits": [
+    {
+      "id": "trait.None",
+      "enum_name": "None",
+      "display_name": "None",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.None"
+      ]
+    },
+    {
+      "id": "trait.Dualthreat",
+      "enum_name": "Dualthreat",
+      "display_name": "Dual Threat",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.Dualthreat"
+      ]
+    },
+    {
+      "id": "trait.Gunslinger",
+      "enum_name": "Gunslinger",
+      "display_name": "Gunslinger",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.Gunslinger"
+      ]
+    },
+    {
+      "id": "trait.GameManager",
+      "enum_name": "GameManager",
+      "display_name": "Game Manager",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.GameManager"
+      ]
+    },
+    {
+      "id": "trait.ClutchQB",
+      "enum_name": "ClutchQB",
+      "display_name": "Clutch QB",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.ClutchQB"
+      ]
+    },
+    {
+      "id": "trait.PowerRunner",
+      "enum_name": "PowerRunner",
+      "display_name": "Power Runner",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.PowerRunner"
+      ]
+    },
+    {
+      "id": "trait.ScatBack",
+      "enum_name": "ScatBack",
+      "display_name": "Scatback",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.ScatBack"
+      ]
+    },
+    {
+      "id": "trait.AllPurposeRB",
+      "enum_name": "AllPurposeRB",
+      "display_name": "All Purpose RB",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.AllPurposeRB"
+      ]
+    },
+    {
+      "id": "trait.BlockingFB",
+      "enum_name": "BlockingFB",
+      "display_name": "Blocking FB",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.BlockingFB"
+      ]
+    },
+    {
+      "id": "trait.ReceiveFB",
+      "enum_name": "ReceiveFB",
+      "display_name": "Receiving FB",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.ReceiveFB"
+      ]
+    },
+    {
+      "id": "trait.PossessionWR",
+      "enum_name": "PossessionWR",
+      "display_name": "Possession WR",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.PossessionWR"
+      ]
+    },
+    {
+      "id": "trait.DeepThreat",
+      "enum_name": "DeepThreat",
+      "display_name": "Deep Threat",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.DeepThreat"
+      ]
+    },
+    {
+      "id": "trait.SlotReceiver",
+      "enum_name": "SlotReceiver",
+      "display_name": "Slot Receiver",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.SlotReceiver"
+      ]
+    },
+    {
+      "id": "trait.ReceivingTE",
+      "enum_name": "ReceivingTE",
+      "display_name": "Receiving TE",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.ReceivingTE"
+      ]
+    },
+    {
+      "id": "trait.BlockingTE",
+      "enum_name": "BlockingTE",
+      "display_name": "Blocking TE",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.BlockingTE"
+      ]
+    },
+    {
+      "id": "trait.BookEndTackle",
+      "enum_name": "BookEndTackle",
+      "display_name": "Bookend Tackle",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.BookEndTackle"
+      ]
+    },
+    {
+      "id": "trait.TenaciousBlocker",
+      "enum_name": "TenaciousBlocker",
+      "display_name": "Tenacious Blocker",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.TenaciousBlocker"
+      ]
+    },
+    {
+      "id": "trait.AthBlocker",
+      "enum_name": "AthBlocker",
+      "display_name": "Athletic Blocker",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.AthBlocker"
+      ]
+    },
+    {
+      "id": "trait.NoseTackle",
+      "enum_name": "NoseTackle",
+      "display_name": "Nose Tackle",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.NoseTackle"
+      ]
+    },
+    {
+      "id": "trait.BullRusher",
+      "enum_name": "BullRusher",
+      "display_name": "Bull Rusher",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.BullRusher"
+      ]
+    },
+    {
+      "id": "trait.SpeedRusher",
+      "enum_name": "SpeedRusher",
+      "display_name": "Speed Rusher",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.SpeedRusher"
+      ]
+    },
+    {
+      "id": "trait.CoverageLB",
+      "enum_name": "CoverageLB",
+      "display_name": "Coverage LB",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.CoverageLB"
+      ]
+    },
+    {
+      "id": "trait.Thumper",
+      "enum_name": "Thumper",
+      "display_name": "Thumper",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.Thumper"
+      ]
+    },
+    {
+      "id": "trait.HybridLB",
+      "enum_name": "HybridLB",
+      "display_name": "Hybrid Passrusher",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.HybridLB"
+      ]
+    },
+    {
+      "id": "trait.ShutDownCorner",
+      "enum_name": "ShutDownCorner",
+      "display_name": "Shut Down Corner",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.ShutDownCorner"
+      ]
+    },
+    {
+      "id": "trait.PressCorner",
+      "enum_name": "PressCorner",
+      "display_name": "Press Corner",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.PressCorner"
+      ]
+    },
+    {
+      "id": "trait.ZoneCorner",
+      "enum_name": "ZoneCorner",
+      "display_name": "Zone Corner",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.ZoneCorner"
+      ]
+    },
+    {
+      "id": "trait.SlotCorner",
+      "enum_name": "SlotCorner",
+      "display_name": "Slot Corner",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.SlotCorner"
+      ]
+    },
+    {
+      "id": "trait.BoxSafety",
+      "enum_name": "BoxSafety",
+      "display_name": "Box Safety",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.BoxSafety"
+      ]
+    },
+    {
+      "id": "trait.Centerfielder",
+      "enum_name": "Centerfielder",
+      "display_name": "Centerfielder",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.Centerfielder"
+      ]
+    },
+    {
+      "id": "trait.ClutchKicker",
+      "enum_name": "ClutchKicker",
+      "display_name": "Clutch Kicker",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.ClutchKicker"
+      ]
+    },
+    {
+      "id": "trait.PowerKicker",
+      "enum_name": "PowerKicker",
+      "display_name": "Power Leg",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.PowerKicker"
+      ]
+    },
+    {
+      "id": "trait.LockerLeader",
+      "enum_name": "LockerLeader",
+      "display_name": "Locker Room Leader",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.LockerLeader"
+      ]
+    },
+    {
+      "id": "trait.RawTalent",
+      "enum_name": "RawTalent",
+      "display_name": "Natural Talent",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.RawTalent"
+      ]
+    },
+    {
+      "id": "trait.WorkoutFanatic",
+      "enum_name": "WorkoutFanatic",
+      "display_name": "Workout Fanatic",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.WorkoutFanatic"
+      ]
+    },
+    {
+      "id": "trait.FilmGeek",
+      "enum_name": "FilmGeek",
+      "display_name": "Film Geek",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.FilmGeek"
+      ]
+    },
+    {
+      "id": "trait.Competitor",
+      "enum_name": "Competitor",
+      "display_name": "Fierce Competitor",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.Competitor"
+      ]
+    },
+    {
+      "id": "trait.ConsummatePro",
+      "enum_name": "ConsummatePro",
+      "display_name": "Consummate Pro",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.ConsummatePro"
+      ]
+    },
+    {
+      "id": "trait.RoughDiamond",
+      "enum_name": "RoughDiamond",
+      "display_name": "High Aptitude",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.RoughDiamond"
+      ]
+    },
+    {
+      "id": "trait.HiddenGem",
+      "enum_name": "HiddenGem",
+      "display_name": "Hidden Gem",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.HiddenGem"
+      ]
+    },
+    {
+      "id": "trait.DevelopingStar",
+      "enum_name": "DevelopingStar",
+      "display_name": "Developing Star",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.DevelopingStar"
+      ]
+    },
+    {
+      "id": "trait.ProBloodline",
+      "enum_name": "ProBloodline",
+      "display_name": "Pro Bloodline",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.ProBloodline"
+      ]
+    },
+    {
+      "id": "trait.Diva",
+      "enum_name": "Diva",
+      "display_name": "Diva",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.Diva"
+      ]
+    },
+    {
+      "id": "trait.Distraction",
+      "enum_name": "Distraction",
+      "display_name": "Distraction",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.Distraction"
+      ]
+    },
+    {
+      "id": "trait.FanFavorite",
+      "enum_name": "FanFavorite",
+      "display_name": "Fan Favorite",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.FanFavorite"
+      ]
+    },
+    {
+      "id": "trait.Legend",
+      "enum_name": "Legend",
+      "display_name": "Legend",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.Legend"
+      ]
+    },
+    {
+      "id": "trait.RoleModel",
+      "enum_name": "RoleModel",
+      "display_name": "Role Model",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.RoleModel"
+      ]
+    },
+    {
+      "id": "trait.BadInfluence",
+      "enum_name": "BadInfluence",
+      "display_name": "Bad Influence",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.BadInfluence"
+      ]
+    },
+    {
+      "id": "trait.OFRedFlags",
+      "enum_name": "OFRedFlags",
+      "display_name": "Off Field Issues",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.OFRedFlags"
+      ]
+    },
+    {
+      "id": "trait.InjuryProne",
+      "enum_name": "InjuryProne",
+      "display_name": "Injury Prone",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.InjuryProne"
+      ]
+    },
+    {
+      "id": "trait.TeamPlayer",
+      "enum_name": "TeamPlayer",
+      "display_name": "Team Player",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.TeamPlayer"
+      ]
+    },
+    {
+      "id": "trait.Athlete",
+      "enum_name": "Athlete",
+      "display_name": "Athlete",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.Athlete"
+      ]
+    },
+    {
+      "id": "trait.CommunityBenefactor",
+      "enum_name": "CommunityBenefactor",
+      "display_name": "Community Benefactor",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.CommunityBenefactor"
+      ]
+    },
+    {
+      "id": "trait.MediaDarling",
+      "enum_name": "MediaDarling",
+      "display_name": "Media Darling",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.MediaDarling"
+      ]
+    },
+    {
+      "id": "trait.Pick1Overall",
+      "enum_name": "Pick1Overall",
+      "display_name": "First Overall Pick",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.Pick1Overall"
+      ]
+    },
+    {
+      "id": "trait.MrIrellevant",
+      "enum_name": "MrIrellevant",
+      "display_name": "Mr. Irellevant",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.MrIrellevant"
+      ]
+    },
+    {
+      "id": "trait.Journeyman",
+      "enum_name": "Journeyman",
+      "display_name": "Journeyman",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.Journeyman"
+      ]
+    },
+    {
+      "id": "trait.Perceptive",
+      "enum_name": "Perceptive",
+      "display_name": "Perceptive",
+      "direct_effect_status": "identified",
+      "fact_ids": [
+        "trait.Perceptive"
+      ]
+    },
+    {
+      "id": "trait.UnderInvestigation",
+      "enum_name": "UnderInvestigation",
+      "display_name": "Under Investigation",
+      "direct_effect_status": "not_identified_in_reviewed_scope",
+      "fact_ids": [
+        "trait.UnderInvestigation"
+      ]
+    }
+  ],
+  "physical_state_fields": [
+    "Height",
+    "Weight",
+    "Age",
+    "Experience",
+    "Potential",
+    "Energy",
+    "InjurySeverity",
+    "Position",
+    "OriginalPosition"
+  ],
+  "player_flags": [
+    "None",
+    "RunningQB"
+  ],
+  "facts": [
+    {
+      "id": "rng.integer",
+      "fields": [
+        "RNG"
+      ],
+      "formula_or_threshold": "R(a,b) inclusive; if a>=b returns a",
+      "conditions": "Integer overload only",
+      "example": "R(1,100)<80 has probability79/100",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/source-full/Draft Day Sports - Pro Football 2021/DDSPF/Functions.cs",
+          "lines": "1473-1480"
+        }
+      ]
+    },
+    {
+      "id": "rating.getters",
+      "fields": [
+        "Strength",
+        "Agility",
+        "Speed",
+        "Hands",
+        "Intelligence",
+        "Arm",
+        "Accuracy",
+        "Tackling",
+        "PassBlocking",
+        "RunBlocking",
+        "Endurance",
+        "KickAccuracy",
+        "KickDistance"
+      ],
+      "formula_or_threshold": "Getters return Attributes values without generic Energy scaling",
+      "conditions": "Energy enters individual formulas explicitly",
+      "example": "Energy70 does not itself multiply every rating by0.7",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "4136-4272"
+        }
+      ]
+    },
+    {
+      "id": "personality.enabled",
+      "fields": [
+        "PersonalitiesEnabled"
+      ],
+      "formula_or_threshold": "Getter always true",
+      "conditions": "Installed5.0.11.0; disabled fallback branches unreachable",
+      "example": "Do not expose a working personality-off simulation toggle",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/source-full/Draft Day Sports - Pro Football 2021/DDSPF/League.cs",
+          "lines": "8888-8893"
+        }
+      ]
+    },
+    {
+      "id": "speed.base",
+      "fields": [
+        "Speed"
+      ],
+      "formula_or_threshold": "1.25f+0.015f*Speed",
+      "conditions": "Before position, ballcarrier, workload, traits and league modifiers",
+      "example": "Speed65=2.225;70=2.300;71=2.315 movement units/iteration",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "2072-2074"
+        }
+      ]
+    },
+    {
+      "id": "speed.heavy-runner",
+      "fields": [
+        "Speed",
+        "Strength",
+        "Weight"
+      ],
+      "formula_or_threshold": "Movement x1.05 if Strength>90 AND Weight>235 AND Speed<80",
+      "conditions": "RB/FB carrying on run; before other multipliers",
+      "example": "Strength91,Weight236: base+bonus Speed79=2.55675 versus80=2.45",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "2317-2320"
+        }
+      ]
+    },
+    {
+      "id": "speed.receiving-rb",
+      "fields": [
+        "Speed"
+      ],
+      "formula_or_threshold": "Speed>=80: x.96/.94/.92/.90 at iteration>30/>40/>50/>60; Speed>85 adds x.97",
+      "conditions": "RB carrying on pass; not routes or ordinary rushes",
+      "example": "Speed86 crosses an extra negative movement threshold",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "2185-2206"
+        }
+      ]
+    },
+    {
+      "id": "speed.scramble",
+      "fields": [
+        "Speed"
+      ],
+      "formula_or_threshold": "Base5; Speed<60 sets0; >70 adds5; >80 adds10",
+      "conditions": "QB scramble tendency accumulator before other terms/overrides",
+      "example": "Speed70 to71 changes this accumulator by5",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "6940-6951"
+        }
+      ]
+    },
+    {
+      "id": "agility.recovery",
+      "fields": [
+        "Agility"
+      ],
+      "formula_or_threshold": "P(R(1,A)>20)=0 for A<=20 else(A-20)/A",
+      "conditions": "Delay-path recovery branch",
+      "example": "A50=60%;A80=75% per qualifying check",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "6094-6097,7415-7418"
+        }
+      ]
+    },
+    {
+      "id": "agility.receiver",
+      "fields": [
+        "Agility"
+      ],
+      "formula_or_threshold": "R(1,A)<20 subtracts1; probability19/A for A>=20",
+      "conditions": "Receiver GetPassChance term",
+      "example": "A80 gives23.75% chance of this -1 term",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "12411-12414"
+        }
+      ]
+    },
+    {
+      "id": "strength.release",
+      "fields": [
+        "Strength"
+      ],
+      "formula_or_threshold": "R(1,110)<Strength; probability(S-1)/110",
+      "conditions": "Engaged movement release check",
+      "example": "Strength90:89/110;91:90/110",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "158,182"
+        }
+      ]
+    },
+    {
+      "id": "contact.runner",
+      "fields": [
+        "Agility",
+        "Speed",
+        "Strength",
+        "Intelligence",
+        "Experience",
+        "Energy"
+      ],
+      "formula_or_threshold": "trunc((4.7*A+2*Speed+5*Strength+4*(Intelligence+min(Experience,8)))*Energy/100)",
+      "conditions": "Initial runner composite; before subsequent modifiers and clamp",
+      "example": "All relevant ratings80,EXP0,Energy100 gives1256",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9696"
+        }
+      ]
+    },
+    {
+      "id": "contact.defender",
+      "fields": [
+        "Strength",
+        "Speed",
+        "Agility",
+        "Tackling",
+        "Intelligence",
+        "Experience",
+        "Energy"
+      ],
+      "formula_or_threshold": "trunc((4*Strength+Speed+A+7.5*Tackling+4*(Intelligence+min(Experience,8)))*Energy/100)",
+      "conditions": "Initial defender composite; before subsequent modifiers and clamp",
+      "example": "All relevant ratings80,EXP0,Energy100 gives1400",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9779"
+        }
+      ]
+    },
+    {
+      "id": "contact.final",
+      "fields": [
+        "Tackling",
+        "Strength",
+        "Energy",
+        "PlayerFlags",
+        "PlayerTraits"
+      ],
+      "formula_or_threshold": "Both final scores clamp800..1200; upper1300 if ballcarrier Dualthreat OR RunningQB. Threshold=formationBase+trunc((defender-runner)/10); success iff threshold>R(1,100)",
+      "conditions": "After all intermediate modifiers; threshold itself not clamped",
+      "example": "Threshold88 gives87% per check",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9949-9965"
+        }
+      ]
+    },
+    {
+      "id": "blocking.pass",
+      "fields": [
+        "PassBlocking",
+        "Strength",
+        "Agility",
+        "Hands",
+        "Tackling",
+        "Experience"
+      ],
+      "formula_or_threshold": "55+(15 if ThrowDeep else0)+trunc((blockerSTR+2*PB+2*AGI+HANDS+EXP-defenderEXP-defenderSTR-2*defenderTACK-defenderAGI)*.1)",
+      "conditions": "Initial pass engagement threshold; later traits, weight, role, skill and other modifiers still apply",
+      "example": "+5 PB adds10 to pre-.1 sum",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "258"
+        }
+      ]
+    },
+    {
+      "id": "blocking.run",
+      "fields": [
+        "RunBlocking",
+        "Strength",
+        "Intelligence",
+        "Tackling",
+        "Agility",
+        "Experience"
+      ],
+      "formula_or_threshold": "40+trunc((blockerSTR+2*RB+EXP+INT-defenderEXP-defenderSTR-2*defenderTACK-defenderAGI)*.1)",
+      "conditions": "Initial non-pass engagement threshold; later traits, weight, role, skill and other modifiers still apply",
+      "example": "+5 RunBlocking adds10 to pre-.1 sum",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "263"
+        }
+      ]
+    },
+    {
+      "id": "blocking.team-pass",
+      "fields": [
+        "PassBlocking"
+      ],
+      "formula_or_threshold": "B=sum PB offense slots6..10; R(1,500)>B =>-2; otherwise new R(1,500)<B/2 =>+2",
+      "conditions": "Integer B/2; GetPassChance intermediate term",
+      "example": "B500 expected term2*249/500=.996",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "12423-12431"
+        }
+      ]
+    },
+    {
+      "id": "hands.catch",
+      "fields": [
+        "Hands"
+      ],
+      "formula_or_threshold": "Independent R(1,10100)<H adds2; fresh roll<5H adds1; fresh roll<H^2 adds1",
+      "conditions": "Receiver GetPassChance intermediate terms",
+      "example": "Quadratic H^2 term still changes within70..79",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "12387-12410"
+        }
+      ]
+    },
+    {
+      "id": "hands.penalty-cliffs",
+      "fields": [
+        "Hands"
+      ],
+      "formula_or_threshold": "One shared R(1,10100): H<80 and roll>9000 subtract1; H<70 and roll>6000 subtract another1",
+      "conditions": "Same shared penalty draw; completion calculation has other terms",
+      "example": "69->70 removes4100/10100 expected penalty points;79->80 removes1100/10100",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "12387-12410"
+        }
+      ]
+    },
+    {
+      "id": "hands.targeting",
+      "fields": [
+        "Hands"
+      ],
+      "formula_or_threshold": "Generic H<80 weight-5 floor1; RB H>80:+15,>70:+10,>60:+5,else-15/floor1; FB>70:+15,>60:+10,else-15/floor1; TE>85:+5,>70:+2,else-10/floor1",
+      "conditions": "Receiver selection weights; role branches",
+      "example": "RB80 removes generic penalty;81 changes role bonus",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "4030-4092"
+        }
+      ]
+    },
+    {
+      "id": "hands.fumble",
+      "fields": [
+        "Hands"
+      ],
+      "formula_or_threshold": "Intermediate fumble risk multiplied by(100-H)/100",
+      "conditions": "Other additions precede/follow multiplication; final risk not solely this factor",
+      "example": "H100 removes this component; Thumper/COMP additions can remain",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9402-9437"
+        }
+      ]
+    },
+    {
+      "id": "drop.attribution",
+      "fields": [
+        "Hands",
+        "Experience",
+        "Skills",
+        "PlayerTraits"
+      ],
+      "formula_or_threshold": "Drop modifiers classify an already failed pass",
+      "conditions": "PassPlay first fails completion comparison; no new catch-success roll",
+      "example": "Fewer credited drops need not imply more completions",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "6647-6734"
+        }
+      ]
+    },
+    {
+      "id": "intelligence.interception",
+      "fields": [
+        "Intelligence"
+      ],
+      "formula_or_threshold": "Base interception denominator: INT1..69=90;70..74=100;75..80=108;81..85=115;86..90=120;91..95=125;96..100=130",
+      "conditions": "QB intelligence ladder before WorkEthic, trait, Accuracy, Arm and skill adjustments",
+      "example": "INT 90 uses denominator 120; INT 91 uses 125 before other adjustments",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9548-9572"
+        }
+      ]
+    },
+    {
+      "id": "intelligence.decisions",
+      "fields": [
+        "Intelligence"
+      ],
+      "formula_or_threshold": "Subtract R(1,100); positive difference inspects1 target plus extras at>30,>60,>90",
+      "conditions": "Target filtering before final passing decision",
+      "example": "INT affects target consideration as well as final roll",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "4164-4200"
+        }
+      ]
+    },
+    {
+      "id": "accuracy.pass",
+      "fields": [
+        "Accuracy",
+        "Intelligence"
+      ],
+      "formula_or_threshold": "Accuracy<65:-3;65..79:0(+1 if INT>=95);80..89:+1;90+:+2",
+      "conditions": "GetPassChance else-if branch",
+      "example": "Accuracy80 and90 are separate positive boundaries",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "12540-12555"
+        }
+      ]
+    },
+    {
+      "id": "accuracy.interception",
+      "fields": [
+        "Accuracy"
+      ],
+      "formula_or_threshold": "Denominator bonus0 through80;81..90:+2;91..95:+4;96+:+5",
+      "conditions": "Interception random denominator, fixed numerator",
+      "example": "Accuracy80->81 changes interception range despite no new pass-chance step",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9589-9599"
+        }
+      ]
+    },
+    {
+      "id": "arm.interception",
+      "fields": [
+        "Arm"
+      ],
+      "formula_or_threshold": "Denominator+1 at>80,+2 at>90; raw QB weighted coefficient1.1",
+      "conditions": "Interception; before final conditional probability",
+      "example": "Arm81 and91 cross range steps",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9601-9608,9651"
+        }
+      ]
+    },
+    {
+      "id": "arm.deep",
+      "fields": [
+        "Arm"
+      ],
+      "formula_or_threshold": "Deep-throw accumulator+5 at>80 and another+5 at>90",
+      "conditions": "Pass decision; preceding context gates remain",
+      "example": "Arm91 differs in preference from90",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "6506-6513"
+        }
+      ]
+    },
+    {
+      "id": "kicking.fg",
+      "fields": [
+        "KickAccuracy",
+        "KickDistance",
+        "Skills"
+      ],
+      "formula_or_threshold": "Threshold=roundEven((80+KA+KD)*skillModifier); modifier1.02 ifskill>80,.95 if<60,else1; successR(1,upper)<threshold",
+      "conditions": "Modern distance D: upper300+(D-10)+adjustment; adjustment-50 D<20,-40 D<30,-30 D<40,+15 D<50,+100 D>=50 plus50 D>=60; D>=70 forcedfailure",
+      "example": "KA90,KD90,skill70,D40 =>259/345",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9106-9143,9188"
+        }
+      ]
+    },
+    {
+      "id": "kicking.xp",
+      "fields": [
+        "KickAccuracy",
+        "Experience"
+      ],
+      "formula_or_threshold": "Threshold=clamp(115+KA+4*EXP,190,200); successR(1,202)<threshold",
+      "conditions": "Isolated extra-point success equation",
+      "example": "EXP0 KA85 reaches200 threshold,199/202 chance",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9269-9274"
+        }
+      ]
+    },
+    {
+      "id": "kicking.selection",
+      "fields": [
+        "KickDistance"
+      ],
+      "formula_or_threshold": "Field threshold190 KD<80;178 KD80..90;169 KD91..95;160 KD96..98;154 KD99+",
+      "conditions": "Uses maximum KD among ALL roster current-K players; downstream game-state gates",
+      "example": "Reserve kicker can change attempt decision",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "4528-4547"
+        }
+      ]
+    },
+    {
+      "id": "punt.control",
+      "fields": [
+        "KickAccuracy",
+        "Intelligence",
+        "Skills"
+      ],
+      "formula_or_threshold": "5+roundEven(KA/20)+roundEven(INT/20), plus5 skill>80 or-10 skill<60; plus5 KA>80 and5 KA>90",
+      "conditions": "Avoid-touchback branch when punt would reach endzone",
+      "example": "Rounded twentieth transitions11,30,51,70,91",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "8244-8266"
+        }
+      ]
+    },
+    {
+      "id": "endurance.loss",
+      "fields": [
+        "Endurance",
+        "Energy",
+        "Position",
+        "OriginalPosition"
+      ],
+      "formula_or_threshold": "Subtract R(2,6)+away R(0,3)+convertedWRtoRB R(1,4)+ifE<40 R(0,3)+ifE<60 R(0,3); clamp40..100",
+      "conditions": "Current QB exempt; each listed draw independent",
+      "example": "Home non-QB E60 removes low-endurance draw",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "5091-5119"
+        }
+      ]
+    },
+    {
+      "id": "endurance.recovery",
+      "fields": [
+        "Endurance",
+        "Energy"
+      ],
+      "formula_or_threshold": "Add R(1,5)+ifE>40 R(0,3)+ifE>70 R(0,3); clamp40..100",
+      "conditions": "Recovery called for all players, including active",
+      "example": "E70->71 adds recovery draw mean1.5",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "5123-5134"
+        }
+      ]
+    },
+    {
+      "id": "endurance.order",
+      "fields": [
+        "Endurance",
+        "Energy"
+      ],
+      "formula_or_threshold": "Subtract active offense/defense, then recover EVERY player on both teams",
+      "conditions": "CheckFatigue returns early preseason; before new lineup selection",
+      "example": "Active players recover too; not bench-only",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "10600-10620,11437"
+        }
+      ]
+    },
+    {
+      "id": "endurance.carry",
+      "fields": [
+        "Endurance",
+        "Energy"
+      ],
+      "formula_or_threshold": "loss18-R(0,floor(E/4)); negative loss replaced1,zero retained; workloadextra7 ifcarries>30,5 if>20,3 if>15",
+      "conditions": "Run ballcarrier; no immediate clamp at assignment",
+      "example": "E71 baseline meanloss9.5;E72 mean9",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "5475-5491"
+        }
+      ]
+    },
+    {
+      "id": "endurance.catch",
+      "fields": [
+        "Endurance",
+        "Energy"
+      ],
+      "formula_or_threshold": "loss18-floor(E/10)",
+      "conditions": "Completed catch; E is Endurance rating",
+      "example": "E69 loss12;70 loss11;80 loss10",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "6858"
+        }
+      ]
+    },
+    {
+      "id": "endurance.action",
+      "fields": [
+        "Endurance",
+        "Energy"
+      ],
+      "formula_or_threshold": "Lose1 ifR(1,100)>Endurance",
+      "conditions": "Specific defensive pass-action visits, not every snap",
+      "example": "Endurance80 gives20% per visited check",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "7344-7346,7405-7407"
+        }
+      ]
+    },
+    {
+      "id": "endurance.workload",
+      "fields": [
+        "Endurance",
+        "Energy"
+      ],
+      "formula_or_threshold": "q=.90 E<=70,.92 E71..80,.94 E81..90,.96 E91..95,.99 E96+; multiply .99q >10rushes,.95q >15,.92q >20,.90q >30",
+      "conditions": "Movement workload branch; on pass plays >10 attempts q first x1.1; E is rating not current energy",
+      "example": "Over30 rushes run factor E70=.8100,E71=.8280",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "2093-2125"
+        }
+      ]
+    },
+    {
+      "id": "competitiveness.receiving",
+      "fields": [
+        "Competitiveness"
+      ],
+      "formula_or_threshold": "R(1,C)>70 adds1 pass-chance point",
+      "conditions": "Receiver; personalities enabled (always true in stock)",
+      "example": "C71 triggers1/71;C80 triggers10/80",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "12419"
+        }
+      ]
+    },
+    {
+      "id": "competitiveness.fatigue",
+      "fields": [
+        "Competitiveness"
+      ],
+      "formula_or_threshold": "At>=5 tackles and noCompetitor, R(1,100)>C multiplies tackle score.9",
+      "conditions": "Separate>=8 tackles .9 remains",
+      "example": "C80 triggers20% conditional penalty",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9810-9815"
+        }
+      ]
+    },
+    {
+      "id": "competitiveness.fumble",
+      "fields": [
+        "Competitiveness"
+      ],
+      "formula_or_threshold": "Runner C>tackler C subtract.5 risk; else add1; final risk x.9 later",
+      "conditions": "No personality gate; ties favor defender",
+      "example": "C91 versusdefender90 crosses relative boundary",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9423-9437"
+        }
+      ]
+    },
+    {
+      "id": "height.receiving",
+      "fields": [
+        "Height"
+      ],
+      "formula_or_threshold": "<72:-1;72:0;73..76:+1;77..80:+2;81+:+3; extra+1 iftaller than closestdefender",
+      "conditions": "Inches; GetPassChance receiver modifier",
+      "example": "Height73 and76 share base bonus",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "12367-12385"
+        }
+      ]
+    },
+    {
+      "id": "weight.blocking",
+      "fields": [
+        "Weight"
+      ],
+      "formula_or_threshold": "Blocker-opponent >30:+25,>20:+20,>10:+5; opponent-blocker>25:-10,>15:-5;else0",
+      "conditions": "Relative pounds; blocking intermediate score",
+      "example": "Weightdifference20->21 adds15 intermediate points",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "293-312"
+        }
+      ]
+    },
+    {
+      "id": "experience.contact",
+      "fields": [
+        "Experience"
+      ],
+      "formula_or_threshold": "Contact/decision terms commonly min(EXP,8); blocking/penalties/teamplay uncapped",
+      "conditions": "Consumer-specific; XP uses4*EXP within own cap",
+      "example": "EXP9 addsno extra min(EXP,8) contact term",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9696,9779,10055-10056,12227-12264"
+        }
+      ]
+    },
+    {
+      "id": "energy.initial",
+      "fields": [
+        "Energy",
+        "InjurySeverity"
+      ],
+      "formula_or_threshold": "min(100,100-InjurySeverity)",
+      "conditions": "Game energy initialization",
+      "example": "InjurySeverity20 starts Energy80",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "543,581"
+        }
+      ]
+    },
+    {
+      "id": "skills.common-penalty",
+      "fields": [
+        "Skills"
+      ],
+      "formula_or_threshold": "1..10:15;11..20:10;21..30:8;31..40:6;41..50:4;51..60:2;61..70:1;71+:0",
+      "conditions": "GetPositionPenalty; lined-up/current skill depends on caller",
+      "example": "Skill70->71 clears this penalty only",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "12791"
+        }
+      ]
+    },
+    {
+      "id": "skills.contact",
+      "fields": [
+        "Skills"
+      ],
+      "formula_or_threshold": "Current-position skill>80 x1.05; <60 x.95; else1",
+      "conditions": "Separate from shared position penalty; both contact participants",
+      "example": "Skill80->81 changes contact multiplier",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9714,9781"
+        }
+      ]
+    },
+    {
+      "id": "skills.movement",
+      "fields": [
+        "Skills"
+      ],
+      "formula_or_threshold": "Current skill<30 x.90;30..59 x.95;60+ x1",
+      "conditions": "Final movement skill penalty",
+      "example": "Skill59->60 removes.95 multiplier",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "2490"
+        }
+      ]
+    },
+    {
+      "id": "skills.qb-pass",
+      "fields": [
+        "Skills"
+      ],
+      "formula_or_threshold": "QBskill<30:-20;30..39:-15;40..49:-10;50..59:-7;60..69:-5;70+:0",
+      "conditions": "GetPassChance; other skill consumers retain other steps",
+      "example": "QBskill69->70 removes5-point penalty",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "12459-12480"
+        }
+      ]
+    },
+    {
+      "id": "trait.None",
+      "fields": [
+        "PlayerTraits.None"
+      ],
+      "formula_or_threshold": "Sentinel, no benefit",
+      "conditions": [],
+      "example": "Lookup None by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "139"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1342"
+        }
+      ]
+    },
+    {
+      "id": "trait.Dualthreat",
+      "fields": [
+        "PlayerTraits.Dualthreat"
+      ],
+      "formula_or_threshold": "QB run/scramble movement x1.05, tackle resistance x1.05 in QB-run branch; scramble tendency+30. RunningQB flag overlaps some branches but adds separately in scramble tendency (`Player:2397,2449`;GameFunctions:6952,9742,9952)",
+      "conditions": [],
+      "example": "Lookup Dualthreat by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "140"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1345"
+        }
+      ]
+    },
+    {
+      "id": "trait.Gunslinger",
+      "fields": [
+        "PlayerTraits.Gunslinger"
+      ],
+      "formula_or_threshold": "Deep-throw preference accumulator+5 when deep consideration not disabled by fourth down/field position (`6502`)",
+      "conditions": [],
+      "example": "Lookup Gunslinger by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "141"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1348"
+        }
+      ]
+    },
+    {
+      "id": "trait.GameManager",
+      "fields": [
+        "PlayerTraits.GameManager"
+      ],
+      "formula_or_threshold": "Interception range+4 unless FilmGeek takes precedence (`9581`); throwaway logic bonus min(5,Int/15) (`7516`)",
+      "conditions": [],
+      "example": "Lookup GameManager by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "142"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1351"
+        }
+      ]
+    },
+    {
+      "id": "trait.ClutchQB",
+      "fields": [
+        "PlayerTraits.ClutchQB"
+      ],
+      "formula_or_threshold": "Auto-generation found; no direct named game-action use found in full-source symbol search",
+      "conditions": [],
+      "example": "Lookup ClutchQB by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "143"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1354"
+        }
+      ]
+    },
+    {
+      "id": "trait.PowerRunner",
+      "fields": [
+        "PlayerTraits.PowerRunner"
+      ],
+      "formula_or_threshold": "Run RB/FB movement x1.02; QB movement x1.05; resistance x1.08 if stronger and separate x1.02 near starting ball position; bypasses ballcarrier path branch (`Player:2325,2401,2453`;GameFunctions:5666,7022,9698,9702)",
+      "conditions": [],
+      "example": "Lookup PowerRunner by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "144"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1357"
+        }
+      ]
+    },
+    {
+      "id": "trait.ScatBack",
+      "fields": [
+        "PlayerTraits.ScatBack"
+      ],
+      "formula_or_threshold": "Pass ballcarrier movement x1.01; RB/FB rushing x1.02; automatic third-down-back preference x1.1 (`Full:Libraries/GamePlan.cs:396`)",
+      "conditions": [],
+      "example": "Lookup ScatBack by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "145"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1360"
+        }
+      ]
+    },
+    {
+      "id": "trait.AllPurposeRB",
+      "fields": [
+        "PlayerTraits.AllPurposeRB"
+      ],
+      "formula_or_threshold": "Drop threshold-3 within nonstacking receiving-trait chain; automatic third-down-back preference x1.1 (`6727`;Full:Libraries/GamePlan:388)",
+      "conditions": "The drop-threshold effect is post-failure attribution only, not a second completion check; the receiving drop-trait chain does not stack.",
+      "example": "Lookup AllPurposeRB by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "146"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1363"
+        }
+      ]
+    },
+    {
+      "id": "trait.BlockingFB",
+      "fields": [
+        "PlayerTraits.BlockingFB"
+      ],
+      "formula_or_threshold": "Blocking score+10 when Position FB; target weight reduced10, floor1 when FB (`Player:273`;GameFunctions:4010)",
+      "conditions": [],
+      "example": "Lookup BlockingFB by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "147"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1366"
+        }
+      ]
+    },
+    {
+      "id": "trait.ReceiveFB",
+      "fields": [
+        "PlayerTraits.ReceiveFB"
+      ],
+      "formula_or_threshold": "Pass ballcarrier movement x1.05; drop threshold-3 in chain; auto third-down preference x1.05 (`Player:2249`;6723;Full:Libraries/GamePlan:384)",
+      "conditions": [
+        "The drop-threshold effect is post-failure attribution only; it does not independently change completion success. The receiving drop-trait chain does not stack."
+      ],
+      "example": "Lookup ReceiveFB by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "148"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1369"
+        }
+      ]
+    },
+    {
+      "id": "trait.PossessionWR",
+      "fields": [
+        "PlayerTraits.PossessionWR"
+      ],
+      "formula_or_threshold": "Third-down target weight+5; drop threshold-3; pass ballcarrier movement x.95, a real tradeoff (`3998,6715`;Player:2245)",
+      "conditions": [
+        "The drop-threshold effect is post-failure attribution only; it does not independently change completion success. The receiving drop-trait chain does not stack."
+      ],
+      "example": "Lookup PossessionWR by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "149"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1372"
+        }
+      ]
+    },
+    {
+      "id": "trait.DeepThreat",
+      "fields": [
+        "PlayerTraits.DeepThreat"
+      ],
+      "formula_or_threshold": "Deep-target weight+10; pass ballcarrier movement x1.01; auto third-down preference x1.1 (`4018`;Player:2241;Full:Libraries/GamePlan:392)",
+      "conditions": [],
+      "example": "Lookup DeepThreat by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "150"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1375"
+        }
+      ]
+    },
+    {
+      "id": "trait.SlotReceiver",
+      "fields": [
+        "PlayerTraits.SlotReceiver"
+      ],
+      "formula_or_threshold": "Pass ballcarrier movement x1.01; pass-path decision threshold25→15 (`Player:2261`;7025)",
+      "conditions": [],
+      "example": "Lookup SlotReceiver by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "151"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1378"
+        }
+      ]
+    },
+    {
+      "id": "trait.ReceivingTE",
+      "fields": [
+        "PlayerTraits.ReceivingTE"
+      ],
+      "formula_or_threshold": "TE target weight+2; pass ballcarrier movement x1.05; drop threshold-3 in chain (`4002,6719`;Player:2253)",
+      "conditions": [
+        "The drop-threshold effect is post-failure attribution only; it does not independently change completion success. The receiving drop-trait chain does not stack."
+      ],
+      "example": "Lookup ReceivingTE by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "152"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1381"
+        }
+      ]
+    },
+    {
+      "id": "trait.BlockingTE",
+      "fields": [
+        "PlayerTraits.BlockingTE"
+      ],
+      "formula_or_threshold": "TE blocking+10; TE target weight reduced10, floor1 (`Player:269`;4006)",
+      "conditions": [],
+      "example": "Lookup BlockingTE by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "153"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1384"
+        }
+      ]
+    },
+    {
+      "id": "trait.BookEndTackle",
+      "fields": [
+        "PlayerTraits.BookEndTackle"
+      ],
+      "formula_or_threshold": "Auto-generation found; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup BookEndTackle by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "154"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1387"
+        }
+      ]
+    },
+    {
+      "id": "trait.TenaciousBlocker",
+      "fields": [
+        "PlayerTraits.TenaciousBlocker"
+      ],
+      "formula_or_threshold": "Blocking score+10, stacks with AthBlocker (`Player:281`)",
+      "conditions": [],
+      "example": "Lookup TenaciousBlocker by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "155"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1390"
+        }
+      ]
+    },
+    {
+      "id": "trait.AthBlocker",
+      "fields": [
+        "PlayerTraits.AthBlocker"
+      ],
+      "formula_or_threshold": "Blocking score+10 (`Player:277`)",
+      "conditions": [],
+      "example": "Lookup AthBlocker by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "156"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1393"
+        }
+      ]
+    },
+    {
+      "id": "trait.NoseTackle",
+      "fields": [
+        "PlayerTraits.NoseTackle"
+      ],
+      "formula_or_threshold": "Auto-generation found; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup NoseTackle by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "157"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1396"
+        }
+      ]
+    },
+    {
+      "id": "trait.BullRusher",
+      "fields": [
+        "PlayerTraits.BullRusher"
+      ],
+      "formula_or_threshold": "Opposing blocker score-10; pass blitz movement x1.05 (`Player:289,2149`)",
+      "conditions": [],
+      "example": "Lookup BullRusher by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "158"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1399"
+        }
+      ]
+    },
+    {
+      "id": "trait.SpeedRusher",
+      "fields": [
+        "PlayerTraits.SpeedRusher"
+      ],
+      "formula_or_threshold": "Opposing blocker score-10; pass blitz movement x1.05 (`Player:285,2145`)",
+      "conditions": [],
+      "example": "Lookup SpeedRusher by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "159"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1402"
+        }
+      ]
+    },
+    {
+      "id": "trait.CoverageLB",
+      "fields": [
+        "PlayerTraits.CoverageLB"
+      ],
+      "formula_or_threshold": "Auto-generation found; no direct named action use found; game-plan LBRole.Coverage is a separate mechanic",
+      "conditions": [],
+      "example": "Lookup CoverageLB by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "160"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1405"
+        }
+      ]
+    },
+    {
+      "id": "trait.Thumper",
+      "fields": [
+        "PlayerTraits.Thumper"
+      ],
+      "formula_or_threshold": "Blitz movement x1.05; run recognition branches+2; tackle score x1.03; fumble risk accumulator+2 before final x.9 (`Player:2157`;5579,5777,9419,9818)",
+      "conditions": [],
+      "example": "Lookup Thumper by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "161"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1408"
+        }
+      ]
+    },
+    {
+      "id": "trait.HybridLB",
+      "fields": [
+        "PlayerTraits.HybridLB"
+      ],
+      "formula_or_threshold": "Run tackle score x1.15 against play names containing Option, subject to preceding SS/BoxSafety else-if (`9832`)",
+      "conditions": [],
+      "example": "Lookup HybridLB by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "162"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1411"
+        }
+      ]
+    },
+    {
+      "id": "trait.ShutDownCorner",
+      "fields": [
+        "PlayerTraits.ShutDownCorner"
+      ],
+      "formula_or_threshold": "Passes-defensed credit accumulator+15 in else-if chain (`6802`); this occurs after failed catch, so not proof it prevents the completion",
+      "conditions": [
+        "The passes-defensed credit effect occurs after a failed catch; that credit effect is not an independent completion-prevention bonus."
+      ],
+      "example": "Lookup ShutDownCorner by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "163"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1414"
+        }
+      ]
+    },
+    {
+      "id": "trait.PressCorner",
+      "fields": [
+        "PlayerTraits.PressCorner"
+      ],
+      "formula_or_threshold": "Run recognition+1 in chain; passes-defensed credit+2 in chain (`5539,5575,6798`)",
+      "conditions": [
+        "The passes-defensed credit effect occurs after a failed catch; that credit effect is not an independent completion-prevention bonus."
+      ],
+      "example": "Lookup PressCorner by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "164"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1417"
+        }
+      ]
+    },
+    {
+      "id": "trait.ZoneCorner",
+      "fields": [
+        "PlayerTraits.ZoneCorner"
+      ],
+      "formula_or_threshold": "Auto-generation found; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup ZoneCorner by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "165"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1420"
+        }
+      ]
+    },
+    {
+      "id": "trait.SlotCorner",
+      "fields": [
+        "PlayerTraits.SlotCorner"
+      ],
+      "formula_or_threshold": "Blitz movement x1.05; RUN ballcarrier path threshold25→15 (`Player:2153`;5669). Source actually says SlotCorner here, not SlotReceiver",
+      "conditions": [],
+      "example": "Lookup SlotCorner by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "166"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1423"
+        }
+      ]
+    },
+    {
+      "id": "trait.BoxSafety",
+      "fields": [
+        "PlayerTraits.BoxSafety"
+      ],
+      "formula_or_threshold": "Run recognition+2 or+1 in different chains; SS near-line run tackle x1.03 (`5535,5571,5781,9825`)",
+      "conditions": [],
+      "example": "Lookup BoxSafety by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "167"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1426"
+        }
+      ]
+    },
+    {
+      "id": "trait.Centerfielder",
+      "fields": [
+        "PlayerTraits.Centerfielder"
+      ],
+      "formula_or_threshold": "Passes-defensed credit+5 in chain; interception comparison modifier-1 unless Perceptive earlier (`6790,9523`)",
+      "conditions": [
+        "The passes-defensed credit effect occurs after a failed catch; that credit effect is not an independent completion-prevention bonus."
+      ],
+      "example": "Lookup Centerfielder by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "168"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1429"
+        }
+      ]
+    },
+    {
+      "id": "trait.ClutchKicker",
+      "fields": [
+        "PlayerTraits.ClutchKicker"
+      ],
+      "formula_or_threshold": "Auto-generation found; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup ClutchKicker by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "169"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1432"
+        }
+      ]
+    },
+    {
+      "id": "trait.PowerKicker",
+      "fields": [
+        "PlayerTraits.PowerKicker"
+      ],
+      "formula_or_threshold": "Auto-generation found; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup PowerKicker by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "170"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1435"
+        }
+      ]
+    },
+    {
+      "id": "trait.LockerLeader",
+      "fields": [
+        "PlayerTraits.LockerLeader"
+      ],
+      "formula_or_threshold": "Mentor eligibility and training/social mechanisms; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup LockerLeader by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "171"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1438"
+        }
+      ]
+    },
+    {
+      "id": "trait.RawTalent",
+      "fields": [
+        "PlayerTraits.RawTalent"
+      ],
+      "formula_or_threshold": "RB/FB run movement x1.02 (`Player:2329`)",
+      "conditions": [],
+      "example": "Lookup RawTalent by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "172"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1441"
+        }
+      ]
+    },
+    {
+      "id": "trait.WorkoutFanatic",
+      "fields": [
+        "PlayerTraits.WorkoutFanatic"
+      ],
+      "formula_or_threshold": "Training/combine/social uses; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup WorkoutFanatic by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "173"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1444"
+        }
+      ]
+    },
+    {
+      "id": "trait.FilmGeek",
+      "fields": [
+        "PlayerTraits.FilmGeek"
+      ],
+      "formula_or_threshold": "Defender interception modifier additional-5 on repeated play; QB interception range+2 taking precedence over GameManager/Legend (`9514,9577`)",
+      "conditions": [],
+      "example": "Lookup FilmGeek by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "174"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1447"
+        }
+      ]
+    },
+    {
+      "id": "trait.Competitor",
+      "fields": [
+        "PlayerTraits.Competitor"
+      ],
+      "formula_or_threshold": "Bypasses competitiveness tackle fatigue check at>=5 tackles; pass-defense credit+2; training/combine/social uses (`9814,6794`)",
+      "conditions": [
+        "The passes-defensed credit effect occurs after a failed catch; that credit effect is not an independent completion-prevention bonus."
+      ],
+      "example": "Lookup Competitor by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "175"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1450"
+        }
+      ]
+    },
+    {
+      "id": "trait.ConsummatePro",
+      "fields": [
+        "PlayerTraits.ConsummatePro"
+      ],
+      "formula_or_threshold": "Mentoring/training/combine/social; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup ConsummatePro by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "176"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1453"
+        }
+      ]
+    },
+    {
+      "id": "trait.RoughDiamond",
+      "fields": [
+        "PlayerTraits.RoughDiamond"
+      ],
+      "formula_or_threshold": "No named consumption found in searchable full source; enum/description existence is not an effect",
+      "conditions": [],
+      "example": "Lookup RoughDiamond by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "177"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1456"
+        }
+      ]
+    },
+    {
+      "id": "trait.HiddenGem",
+      "fields": [
+        "PlayerTraits.HiddenGem"
+      ],
+      "formula_or_threshold": "Combine effect (`Full:PlayerCombine.cs:99`); no direct named action use found",
+      "conditions": [],
+      "example": "Lookup HiddenGem by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "178"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1459"
+        }
+      ]
+    },
+    {
+      "id": "trait.DevelopingStar",
+      "fields": [
+        "PlayerTraits.DevelopingStar"
+      ],
+      "formula_or_threshold": "No named consumption found in searchable full source",
+      "conditions": [],
+      "example": "Lookup DevelopingStar by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "179"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1462"
+        }
+      ]
+    },
+    {
+      "id": "trait.ProBloodline",
+      "fields": [
+        "PlayerTraits.ProBloodline"
+      ],
+      "formula_or_threshold": "Training/combine/social; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup ProBloodline by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "180"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1465"
+        }
+      ]
+    },
+    {
+      "id": "trait.Diva",
+      "fields": [
+        "PlayerTraits.Diva"
+      ],
+      "formula_or_threshold": "Penalty score+2 unless BadInfluence takes precedence; training/social/coach valuation (`10096,10116`)",
+      "conditions": [],
+      "example": "Lookup Diva by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "181"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1468"
+        }
+      ]
+    },
+    {
+      "id": "trait.Distraction",
+      "fields": [
+        "PlayerTraits.Distraction"
+      ],
+      "formula_or_threshold": "Training/social/coach valuation; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup Distraction by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "182"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1471"
+        }
+      ]
+    },
+    {
+      "id": "trait.FanFavorite",
+      "fields": [
+        "PlayerTraits.FanFavorite"
+      ],
+      "formula_or_threshold": "Team fan/bandwagon effects (`Team.cs:1239,1254`), social; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup FanFavorite by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "183"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1474"
+        }
+      ]
+    },
+    {
+      "id": "trait.Legend",
+      "fields": [
+        "PlayerTraits.Legend"
+      ],
+      "formula_or_threshold": "Defender interception modifier-3 if no Perceptive/Centerfielder; QB range+4 if no FilmGeek/GameManager; fan/coach/social (`9527,9585`)",
+      "conditions": [],
+      "example": "Lookup Legend by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "184"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1477"
+        }
+      ]
+    },
+    {
+      "id": "trait.RoleModel",
+      "fields": [
+        "PlayerTraits.RoleModel"
+      ],
+      "formula_or_threshold": "Penalty score-10 if earlier BadInfluence/Diva/MediaDarling absent; mentor/training/social (`10104,10124`)",
+      "conditions": [],
+      "example": "Lookup RoleModel by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "185"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1480"
+        }
+      ]
+    },
+    {
+      "id": "trait.BadInfluence",
+      "fields": [
+        "PlayerTraits.BadInfluence"
+      ],
+      "formula_or_threshold": "Penalty score+5 and takes precedence over positive traits; training/social/fans (`10092,10112`)",
+      "conditions": [],
+      "example": "Lookup BadInfluence by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "186"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1483"
+        }
+      ]
+    },
+    {
+      "id": "trait.OFRedFlags",
+      "fields": [
+        "PlayerTraits.OFRedFlags"
+      ],
+      "formula_or_threshold": "Social/coach/fan effects; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup OFRedFlags by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "187"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1486"
+        }
+      ]
+    },
+    {
+      "id": "trait.InjuryProne",
+      "fields": [
+        "PlayerTraits.InjuryProne"
+      ],
+      "formula_or_threshold": "Injury threshold-3; training/coach/social effects (`10282,10425,10537`)",
+      "conditions": [],
+      "example": "Lookup InjuryProne by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "188"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1489"
+        }
+      ]
+    },
+    {
+      "id": "trait.TeamPlayer",
+      "fields": [
+        "PlayerTraits.TeamPlayer"
+      ],
+      "formula_or_threshold": "Named trait penalty score-7, last in chain; distinct from numeric personality TeamPlayer (`10108,10128`)",
+      "conditions": [],
+      "example": "Lookup TeamPlayer by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "189"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1492"
+        }
+      ]
+    },
+    {
+      "id": "trait.Athlete",
+      "fields": [
+        "PlayerTraits.Athlete"
+      ],
+      "formula_or_threshold": "Movement: blitz x1.05; non-QB pass ballcarrier x1.01; RB/FB run x1.02; QB run/scramble x1.05 (`Player:2141,2237,2321,2393,2445`)",
+      "conditions": [],
+      "example": "Lookup Athlete by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "190"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1495"
+        }
+      ]
+    },
+    {
+      "id": "trait.CommunityBenefactor",
+      "fields": [
+        "PlayerTraits.CommunityBenefactor"
+      ],
+      "formula_or_threshold": "Fan/social effects; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup CommunityBenefactor by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "191"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1498"
+        }
+      ]
+    },
+    {
+      "id": "trait.MediaDarling",
+      "fields": [
+        "PlayerTraits.MediaDarling"
+      ],
+      "formula_or_threshold": "Penalty score-10 if BadInfluence/Diva absent; social/coach (`10100,10120`)",
+      "conditions": [],
+      "example": "Lookup MediaDarling by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "192"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1501"
+        }
+      ]
+    },
+    {
+      "id": "trait.Pick1Overall",
+      "fields": [
+        "PlayerTraits.Pick1Overall"
+      ],
+      "formula_or_threshold": "Social/identity use; no direct named game-action benefit found",
+      "conditions": [],
+      "example": "Lookup Pick1Overall by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "193"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1504"
+        }
+      ]
+    },
+    {
+      "id": "trait.MrIrellevant",
+      "fields": [
+        "PlayerTraits.MrIrellevant"
+      ],
+      "formula_or_threshold": "Social/identity use; no direct named game-action benefit found",
+      "conditions": [],
+      "example": "Lookup MrIrellevant by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "194"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1507"
+        }
+      ]
+    },
+    {
+      "id": "trait.Journeyman",
+      "fields": [
+        "PlayerTraits.Journeyman"
+      ],
+      "formula_or_threshold": "Social use; no direct named game-action benefit found",
+      "conditions": [],
+      "example": "Lookup Journeyman by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "195"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1510"
+        }
+      ]
+    },
+    {
+      "id": "trait.Perceptive",
+      "fields": [
+        "PlayerTraits.Perceptive"
+      ],
+      "formula_or_threshold": "Run recognition+5 or+4 in different branches; defender interception modifier-3, precedence over Centerfielder/Legend (`5531,5567,5773,9519`)",
+      "conditions": [],
+      "example": "Lookup Perceptive by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "196"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1513"
+        }
+      ]
+    },
+    {
+      "id": "trait.UnderInvestigation",
+      "fields": [
+        "PlayerTraits.UnderInvestigation"
+      ],
+      "formula_or_threshold": "Social/coach effects; no direct named action use found",
+      "conditions": [],
+      "example": "Lookup UnderInvestigation by exact enum name; apply only the listed role/branch.",
+      "scope": "reviewed_trait_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "197"
+        },
+        {
+          "path": "Headless/_reference/Enums.cs",
+          "lines": "1516"
+        }
+      ]
+    },
+    {
+      "id": "personality.Competitiveness",
+      "fields": [
+        "Competitiveness"
+      ],
+      "formula_or_threshold": "See detailed list below: receiving>70, tackling after 5 tackles, relative fumble and OT checks, QB leadership sum, return and recovery events",
+      "conditions": "Postgame morale response buckets at 20/40/60/80 (`3068+`); trait generation and social/development valuation",
+      "example": "Use numeric Personality.Competitiveness; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "53"
+        }
+      ]
+    },
+    {
+      "id": "personality.Leadership",
+      "fields": [
+        "Leadership"
+      ],
+      "formula_or_threshold": "QB decision R(1,250)>Leadership+Intelligence+min(Exp,8), defaults80 if disabled (`6931`); sum with Comp for blitz/tackle decisions; radio-defender teamplay; relative OT x1.03",
+      "conditions": "Mentor/coach fit, social effects and generation; no universal 70 cap",
+      "example": "Use numeric Personality.Leadership; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "54"
+        }
+      ]
+    },
+    {
+      "id": "personality.WorkEthic",
+      "fields": [
+        "WorkEthic"
+      ],
+      "formula_or_threshold": "QB>90 adds4 to interception random-range parameter (`9573`), **not gated by PersonalitiesEnabled at that use**; radio-defender teamplay also ungated",
+      "conditions": "Training, combine, mentor/social/coach effects; website development bypass does not remove these direct uses",
+      "example": "Use numeric Personality.WorkEthic; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "55"
+        }
+      ]
+    },
+    {
+      "id": "personality.TeamPlayer",
+      "fields": [
+        "TeamPlayer"
+      ],
+      "formula_or_threshold": "Sum of all 11 players plus experience for teamplay; radio defender weighted bonus",
+      "conditions": "See inversion warning below; cannot assume higher is always better in every formula",
+      "example": "Use numeric Personality.TeamPlayer; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "56"
+        }
+      ]
+    },
+    {
+      "id": "personality.Sportsmanship",
+      "fields": [
+        "Sportsmanship"
+      ],
+      "formula_or_threshold": "Penalty score: <20 +8;20–39 +3;40–60 0;61–80 -3;81+ -8, enabled only with personalities (`10059–10089`)",
+      "conditions": "Strict 20/40/61/81 boundaries; contribution can be hidden by outcome clamp/other score terms",
+      "example": "Use numeric Personality.Sportsmanship; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "57"
+        }
+      ]
+    },
+    {
+      "id": "personality.SocialDisposition",
+      "fields": [
+        "SocialDisposition"
+      ],
+      "formula_or_threshold": "No direct GameFunctions on-field expression found",
+      "conditions": "Personality/social type, interactions, morale, mentoring, contracts/coach fit; do not label globally inert",
+      "example": "Use numeric Personality.SocialDisposition; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "58"
+        }
+      ]
+    },
+    {
+      "id": "personality.Money",
+      "fields": [
+        "Money"
+      ],
+      "formula_or_threshold": "No direct GameFunctions on-field expression found",
+      "conditions": "Contract valuation/preferences, social behavior; no benefit to fixed-roster on-field rating identified",
+      "example": "Use numeric Personality.Money; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "59"
+        }
+      ]
+    },
+    {
+      "id": "personality.Security",
+      "fields": [
+        "Security"
+      ],
+      "formula_or_threshold": "No direct GameFunctions on-field expression found",
+      "conditions": "Contracts and social behavior",
+      "example": "Use numeric Personality.Security; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "60"
+        }
+      ]
+    },
+    {
+      "id": "personality.Loyalty",
+      "fields": [
+        "Loyalty"
+      ],
+      "formula_or_threshold": "No direct GameFunctions on-field expression found",
+      "conditions": "Contracts/social/coach effects",
+      "example": "Use numeric Personality.Loyalty; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "61"
+        }
+      ]
+    },
+    {
+      "id": "personality.Winning",
+      "fields": [
+        "Winning"
+      ],
+      "formula_or_threshold": "OT relative check: runner higher x1.07, otherwise tackler x1.07 (`9890`), personality gate",
+      "conditions": "Contracts, morale, trait generation",
+      "example": "Use numeric Personality.Winning; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "62"
+        }
+      ]
+    },
+    {
+      "id": "personality.PlayingTime",
+      "fields": [
+        "PlayingTime"
+      ],
+      "formula_or_threshold": "No direct GameFunctions on-field expression found",
+      "conditions": "Contract and attitude/playing-time concerns can change morale",
+      "example": "Use numeric Personality.PlayingTime; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "63"
+        }
+      ]
+    },
+    {
+      "id": "personality.CloseToHome",
+      "fields": [
+        "CloseToHome"
+      ],
+      "formula_or_threshold": "No direct GameFunctions on-field expression found",
+      "conditions": "Contract/social geography preferences",
+      "example": "Use numeric Personality.CloseToHome; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "64"
+        }
+      ]
+    },
+    {
+      "id": "personality.MarketSize",
+      "fields": [
+        "MarketSize"
+      ],
+      "formula_or_threshold": "No direct GameFunctions on-field expression found",
+      "conditions": "Contract/social preferences",
+      "example": "Use numeric Personality.MarketSize; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "65"
+        }
+      ]
+    },
+    {
+      "id": "personality.Morale",
+      "fields": [
+        "Morale"
+      ],
+      "formula_or_threshold": "QB pass-read gate uses floor(Morale/10), or90 if disabled (`6630–6631`)",
+      "conditions": "Injury and game results modify it; UI display buckets are not gameplay breakpoints",
+      "example": "Use numeric Personality.Morale; distinct from any same-named trait.",
+      "scope": "reviewed_personality_use_inventory",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "66"
+        }
+      ]
+    },
+    {
+      "id": "skills.extra",
+      "fields": [
+        "Skills"
+      ],
+      "formula_or_threshold": "All blockers | Current skill>80 adds R(1,5) to engagement threshold; <60 subtracts R(1,5);60–80 neutral (`Player.cs:357–365`). Thus skill81 has a blocking effect as well as tackle effects",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "95"
+        }
+      ]
+    },
+    {
+      "id": "skills.run",
+      "fields": [
+        "Skills"
+      ],
+      "formula_or_threshold": "RB,FB rushing movement | Skill<50 x.98;50 neutral;51–80 x1.02;81–90 x1.04;91+ x1.05 (`Player.cs:2287+`)",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "100"
+        }
+      ]
+    },
+    {
+      "id": "skills.pass-carry",
+      "fields": [
+        "Skills"
+      ],
+      "formula_or_threshold": "TE/RB/WR with ball on pass | Skill<50 x.98;50 neutral;51–70 x1.01;71–85 x1.02;86+ x1.03. TE uses TE,RB uses RB, all other non-QB players use WR here, even FB (`2210–2234`)",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "101"
+        }
+      ]
+    },
+    {
+      "id": "skills.drop",
+      "fields": [
+        "Skills",
+        "Hands"
+      ],
+      "formula_or_threshold": "Failed-pass drop attribution | Current skill<=60 +5;61–70 +3;71–80 +2;81–90 +1;91–95 0;96+ -2 to drop threshold (`6691–6713`), whole threshold later clamped2–30",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "102"
+        }
+      ]
+    },
+    {
+      "id": "skills.lb",
+      "fields": [
+        "Skills",
+        "Intelligence"
+      ],
+      "formula_or_threshold": "LB assignment | Lined-up LB skill<60 can trigger early Delay using R(1,Intelligence)<15 (`5786,7132`)",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "103"
+        }
+      ]
+    },
+    {
+      "id": "skills.kick",
+      "fields": [
+        "Skills",
+        "KickAccuracy"
+      ],
+      "formula_or_threshold": "K,P | Skill>80 reduces block threshold1; <60 raises4 (`8096,8512,9107`); P accuracy/disposition computations use >80/<60 too (`8226,8249`)",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "104"
+        }
+      ]
+    },
+    {
+      "id": "injury.gates",
+      "fields": [
+        "Endurance",
+        "InjurySeverity",
+        "PlayerTraits"
+      ],
+      "formula_or_threshold": "Injury checks skip exhibition/Pro Bowl and DisableInjuries (`10248–10256,10392–10404`). Random-player injury gate is R(1,100)<8; targeted-player gate <10, with TeamID=0 excluded. They draw an injury severity and a second roll. Random-player threshold n=96, -1 at E<50, +5 at E>75, -3 InjuryProne (`10273–10285`). Targeted n=96, -3 at E<50, +3 at E>75, -3 InjuryProne (`10416–10428`). Severity>70 succeeds when second roll>n; failing that, severity>30 succeeds when roll>n-5; severity<=30 when roll>n-35. **A severe injury draw can still succeed via the second branch**: E76 random-player n101 eliminates first comparison >101, but second comparison >96 still permits a severe injury. Do not claim immunity. With InjuryProne n98 instead. Training/off-field overload uses the latter threshold family (`10529–10540`) and a league InjurySetting gate.",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "41"
+        }
+      ]
+    },
+    {
+      "id": "substitution.energy",
+      "fields": [
+        "Endurance",
+        "Energy"
+      ],
+      "formula_or_threshold": "`GameFunctions.cs:11509–11555`: if Energy<90, a candidate can be skipped on `R(1,E)<threshold`. RB and WR threshold 15 (14/E probability); the subsequent WR-only threshold 10 branch is unreachable because WR matched already. DT 8; DE 15; G/T/C 5; other positions default 0. This is within offensive lineup selection, so listing DT/DE here is not proof these are the ordinary defensive rotation rules. Main offense selection also requires Energy>80, injury severity<10, workload below dynamically selected limits, and no duplicate player. E>80 adds R(1,4) to carry limit; E<60 subtracts R(1,4). Main defensive selection similarly checks Energy>80 (`11727`), with fallback paths relaxing energy requirements. A skip is not guaranteed to bench the player for the whole snap: fallback logic and available depth matter.",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "39"
+        }
+      ]
+    },
+    {
+      "id": "teamplay.sign",
+      "fields": [
+        "TeamPlayer"
+      ],
+      "formula_or_threshold": "`GetPassChance:12432–12439` SUBTRACTS positive teamplaymod and adds absolute negative mod: more offensive teamplay lowers this intermediate pass score. `CheckTackle:9930–9938` adjusts a tackle threshold in the same sign pattern but a different comparison. Treat the pass result as a code anomaly requiring isolated stock verification, not blanket advice to minimize TeamPlayer. The morale and off-field costs of low ratings still exist. Even the theoretical disabled branch would not make every personality read inert (fumble, QB WorkEthic and radio defender remain). In the actual stock assembly the getter is always true.",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "84"
+        }
+      ]
+    },
+    {
+      "id": "flags.running-qb",
+      "fields": [
+        "PlayerFlags"
+      ],
+      "formula_or_threshold": "The entire `PlayerFlags` enum consists of None=0 and RunningQB=1. RunningQB is not the same stored field as Dualthreat, although some branches accept either:",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "125"
+        }
+      ]
+    },
+    {
+      "id": "age.scope",
+      "fields": [
+        "Age",
+        "Weight"
+      ],
+      "formula_or_threshold": "Tackle resistance gives ballcarrier x1.05 if strictly heavier (`9706`); rushing movement RB/FB receives x1.05 for Strength>90 AND Weight>235 AND Speed<80 (`Player.cs:2317`). Weight also affects overall/selection scores and auto-generated traits, so fixed lineup testing should separate physical mechanics from changing who gets selected. No direct age term found in snap resolution; age appears in postgame skill progression (`2779`), generation, valuation, contracts and development. Do not pay for age reduction expecting a direct speed boost if attributes/state are identical.",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "113"
+        }
+      ]
+    },
+    {
+      "id": "potential.scope",
+      "fields": [
+        "Potential"
+      ],
+      "formula_or_threshold": "Potential: no direct snap formula found in GameFunctions. In `Player.GetValue:6774–6784`, Potential>90 +.5,>80 +.3,<30 -.5 affects player evaluation; it also participates in creation and training. This can affect selection/development, not an automatic game-action multiplier. Parent report covers full selection paths; do not equate a display/value boost with better performance while roster and deployment are held fixed.",
+      "conditions": "Scope and condition clauses within the recorded source summary apply.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "117"
+        }
+      ]
+    },
+    {
+      "id": "flags.running-qb.use-127",
+      "fields": [
+        "PlayerFlags"
+      ],
+      "formula_or_threshold": "`Player.CurrentSpeed:2397,2449`: QB run and scramble movement x1.05 for Dualthreat OR RunningQB. Having both does not double this multiplier.",
+      "conditions": "RunningQB is a separate flag from Dualthreat; OR tests do not double-stack.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "127"
+        }
+      ]
+    },
+    {
+      "id": "flags.running-qb.use-128",
+      "fields": [
+        "PlayerFlags"
+      ],
+      "formula_or_threshold": "`GameFunctions:6952–6960`: scramble tendency adds 30 for Dualthreat and separately 15 for RunningQB; here they do stack. Game-plan QBScrambling can override the accumulator.",
+      "conditions": "RunningQB is a separate flag from Dualthreat; OR tests do not double-stack.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "128"
+        }
+      ]
+    },
+    {
+      "id": "flags.running-qb.use-129",
+      "fields": [
+        "PlayerFlags"
+      ],
+      "formula_or_threshold": "`9742`: QB-run tackle resistance x1.05 for either, not twice. `9952`: either expands the final tackle-score ceiling from 1200 to 1300 **for both runner and defender**, not just the QB.",
+      "conditions": "RunningQB is a separate flag from Dualthreat; OR tests do not double-stack.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "129"
+        }
+      ]
+    },
+    {
+      "id": "flags.running-qb.use-130",
+      "fields": [
+        "PlayerFlags"
+      ],
+      "formula_or_threshold": "`9758–9776`: RunningQB changes the QB half-resistance test threshold from 50 to 10; at Leadership+Comp 160 the event changes from 49/160 to 9/160 where that branch is reached. With the flag, an Option-named play behind the line instead gives x1.2; another run behind the line gives x1.1 and bypasses the later half-resistance branch.",
+      "conditions": "RunningQB is a separate flag from Dualthreat; OR tests do not double-stack.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "130"
+        }
+      ]
+    },
+    {
+      "id": "flags.running-qb.use-131",
+      "fields": [
+        "PlayerFlags"
+      ],
+      "formula_or_threshold": "`4142`: run ballcarrier selection weight gets+15 for RunningQB only after the preceding QB workload>15/>10/>5 branches fail; thus the bonus is reached at<=5 recorded attempts in that chain. This affects opportunity rather than per-contact power.",
+      "conditions": "RunningQB is a separate flag from Dualthreat; OR tests do not double-stack.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "131"
+        }
+      ]
+    },
+    {
+      "id": "flags.running-qb.use-132",
+      "fields": [
+        "PlayerFlags"
+      ],
+      "formula_or_threshold": "`Full:Coach.cs:2602–2633`: a flagged package QB permits QB-designed runs in automatically generated offensive playbooks. `Full:Functions.cs:8514` influences automatic scheme selection along with Speed>65.",
+      "conditions": "RunningQB is a separate flag from Dualthreat; OR tests do not double-stack.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "132"
+        }
+      ]
+    },
+    {
+      "id": "flags.running-qb.use-133",
+      "fields": [
+        "PlayerFlags"
+      ],
+      "formula_or_threshold": "Generation uses different default-rating arrays (`Full:Functions.cs:1707`), draft rating adjustments (`Full:Draft.cs:2960`), and a random 70–80 minimum speed floor (`Player.cs:1350`). `AssignFlags:9902` may add Dualthreat when RunningQB and Speed>70 and Agility>65. None of these generation functions implies that simply toggling the flag immediately mutates an already-imported player's ratings; inspect the specific import/generation caller.",
+      "conditions": "RunningQB is a separate flag from Dualthreat; OR tests do not double-stack.",
+      "example": null,
+      "scope": "reviewed_branch_summary",
+      "evidence_kind": "reviewed_source_audit",
+      "sources": [
+        {
+          "path": "Headless/research/attribute-audit/traits-fatigue.md",
+          "lines": "133"
+        }
+      ]
+    },
+    {
+      "id": "interception.composite",
+      "fields": [
+        "Intelligence",
+        "Accuracy",
+        "Arm",
+        "Agility",
+        "Hands",
+        "Speed",
+        "Energy",
+        "Experience"
+      ],
+      "formula_or_threshold": "QBscore=trunc((4I+4ACC+1.1ARM+Energy+min(EXP,8)+context)/10); DEFscore=trunc((AGI+HANDS+trunc(1.35I)+trunc(SPEED/2.3)+Energy+min(EXP,8)-context)/10); numerator=clamp(6+DEFscore-QBscore,6,60)",
+      "conditions": "Recognized-play adjustments+15/-15 occur after numerator clamp; context itself has multiple inputs",
+      "example": "Numerator6 can stay unchanged as QB ratings rise",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9651-9664"
+        }
+      ]
+    },
+    {
+      "id": "punt.distance",
+      "fields": [
+        "KickDistance",
+        "KickAccuracy",
+        "Skills"
+      ],
+      "formula_or_threshold": "trunc((45+R(15,KD))*.01*skillModifier*150) field units; KD>95 gives independent R(1,100)<5 gate then R(1,60) extra; KA>95 gives same4% gate then R(1,30)",
+      "conditions": "Normal punt distance before endzone handling and clamps",
+      "example": "KD95->96 unlocks an extra4% branch",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "8225-8242"
+        }
+      ]
+    },
+    {
+      "id": "kickoff.distance",
+      "fields": [
+        "KickDistance",
+        "Skills"
+      ],
+      "formula_or_threshold": "R(65,max(KD,75))*.01 times skill modifier; distance=trunc(factor*(90+floor(KD/20)))",
+      "conditions": "Mishit branch and downstream field clipping also apply; not complete play outcome",
+      "example": "KD below75 keeps this random upper bound fixed but floor(KD/20) still changes",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "8511-8524"
+        }
+      ]
+    },
+    {
+      "id": "return.kickoff",
+      "fields": [
+        "Speed",
+        "Agility"
+      ],
+      "formula_or_threshold": "R(minimum,Speed+Agility-60); 1% long-return gate addsR(0,2*(Speed+Agility))",
+      "conditions": "Before field clipping and ceiling-to-yards; inverted-range draw returns minimum",
+      "example": "Combined Speed+Agility affects range rather than a universal individual rating bucket",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "8612-8618"
+        }
+      ]
+    },
+    {
+      "id": "blocking.success",
+      "fields": [
+        "PassBlocking",
+        "RunBlocking"
+      ],
+      "formula_or_threshold": "Engagement succeeds iffR(1,100)<threshold; boolean true is reserved for pancake",
+      "conditions": "Normal engagement also returnsfalse; inspect EngagedInBlock or pancake state",
+      "example": "Threshold70 implies69% initial comparison, before other branches",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/Player.cs",
+          "lines": "366-386"
+        }
+      ]
+    },
+    {
+      "id": "competitiveness.long-gain",
+      "fields": [
+        "Competitiveness",
+        "Endurance"
+      ],
+      "formula_or_threshold": "Runner resistance x.97 ifR(1,200)>Endurance+Competitiveness",
+      "conditions": "Ballcarrier Y-starting ballY>240 field units (80yards)",
+      "example": "Sum200 removes only this penalty draw",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9747-9753"
+        }
+      ]
+    },
+    {
+      "id": "competitiveness.overtime",
+      "fields": [
+        "Competitiveness"
+      ],
+      "formula_or_threshold": "RunnerC>defenderC =>runnerx1.05;else defenderx1.05",
+      "conditions": "Overtime contact; personality enabled",
+      "example": "Ties favor defender",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9874-9882"
+        }
+      ]
+    },
+    {
+      "id": "competitiveness.recovery",
+      "fields": [
+        "Competitiveness",
+        "Agility"
+      ],
+      "formula_or_threshold": "Redraw selected fumble recoverer ifR(1,150)>Agility+Competitiveness",
+      "conditions": "Redraw may choose same player; not possession guarantee",
+      "example": "Combined150 removes this redraw",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "7814"
+        }
+      ]
+    },
+    {
+      "id": "teamplay.sum",
+      "fields": [
+        "TeamPlayer",
+        "Experience",
+        "Leadership",
+        "WorkEthic",
+        "Intelligence"
+      ],
+      "formula_or_threshold": "Sum TeamPlayer+EXP per offense/defense; radio defender addsfloor((2INT+4EXP+TeamPlayer+WorkEthic+Leadership)/10). Offense-defensedifference0=>0;positive=>+1;negative=>-1;absdifference>200 adds another same-sign1",
+      "conditions": "Numeric personality TeamPlayer, not PlayerTraits.TeamPlayer",
+      "example": "Difference200=>+1;201=>+2",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "12227-12264"
+        }
+      ]
+    },
+    {
+      "id": "traits.drop-chain",
+      "fields": [
+        "PlayerTraits"
+      ],
+      "formula_or_threshold": "PossessionWR elseReceivingTE elseReceiveFB elseAllPurposeRB: drop threshold-3 once",
+      "conditions": "Only after pass already failed completion comparison",
+      "example": "All four together still apply only-3",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "6647,6715-6729"
+        }
+      ]
+    },
+    {
+      "id": "traits.qb-int-chain",
+      "fields": [
+        "PlayerTraits"
+      ],
+      "formula_or_threshold": "FilmGeek+2 elseGameManager+4 elseLegend+4 interception denominator",
+      "conditions": "QB branch; other contexts separate",
+      "example": "FilmGeek+GameManager uses+2 here",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9577-9586"
+        }
+      ]
+    },
+    {
+      "id": "traits.def-int-chain",
+      "fields": [
+        "PlayerTraits"
+      ],
+      "formula_or_threshold": "Perceptive-3 elseCenterfielder-1 elseLegend-3 comparison modifier",
+      "conditions": "Defender interception branch",
+      "example": "Centerfielder+Legend uses-1 here",
+      "scope": "local_formula",
+      "evidence_kind": "source_proven",
+      "sources": [
+        {
+          "path": "Headless/_reference/GameFunctions.cs",
+          "lines": "9519-9529"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "core_attributes": 13,
+    "competitiveness": 1,
+    "personality_fields": 14,
+    "position_skills": 16,
+    "trait_enum_entries": 59,
+    "facts": 153
+  },
+  "reviewed_sources": [
+    {
+      "path": "Headless/research/attribute-audit/core-mechanics.md",
+      "sha256": "a86379ca44fe5d314f6bc31decca0c9b9f7be599c8ee136f49c5d6c66e8cac45"
+    },
+    {
+      "path": "Headless/research/attribute-audit/traits-fatigue.md",
+      "sha256": "58eae8d8ed88380c0443ef9676d0ba136ebe9aa077102e7675a94bfd7e690f5f"
+    }
+  ],
+  "physical_state_index": [
+    {
+      "name": "Height",
+      "fact_ids": [
+        "height.receiving"
+      ]
+    },
+    {
+      "name": "Weight",
+      "fact_ids": [
+        "speed.heavy-runner",
+        "weight.blocking",
+        "age.scope"
+      ]
+    },
+    {
+      "name": "Age",
+      "fact_ids": [
+        "age.scope"
+      ]
+    },
+    {
+      "name": "Experience",
+      "fact_ids": [
+        "contact.runner",
+        "contact.defender",
+        "blocking.pass",
+        "blocking.run",
+        "drop.attribution",
+        "kicking.xp",
+        "experience.contact",
+        "interception.composite",
+        "teamplay.sum"
+      ]
+    },
+    {
+      "name": "Potential",
+      "fact_ids": [
+        "potential.scope"
+      ]
+    },
+    {
+      "name": "Energy",
+      "fact_ids": [
+        "contact.runner",
+        "contact.defender",
+        "contact.final",
+        "endurance.loss",
+        "endurance.recovery",
+        "endurance.order",
+        "endurance.carry",
+        "endurance.catch",
+        "endurance.action",
+        "endurance.workload",
+        "energy.initial",
+        "substitution.energy",
+        "interception.composite"
+      ]
+    },
+    {
+      "name": "InjurySeverity",
+      "fact_ids": [
+        "energy.initial",
+        "injury.gates"
+      ]
+    },
+    {
+      "name": "Position",
+      "fact_ids": [
+        "endurance.loss"
+      ]
+    },
+    {
+      "name": "OriginalPosition",
+      "fact_ids": [
+        "endurance.loss"
+      ]
+    }
+  ],
+  "quality_checks": {
+    "unique_fact_ids": true,
+    "source_references_exist_and_line_ranges_valid": true,
+    "source_reference_count": 212,
+    "index_references_valid": true,
+    "trait_count": 59,
+    "field_inventory_counts_valid": true
+  }
+}
