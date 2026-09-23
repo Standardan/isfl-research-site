@@ -1,16 +1,18 @@
 # DDSPF21 build research — LLM handoff
 
-Use this file for the factual narrative and complete build examples. Use `research-pack.json` for structured facts, caps, trait prerequisites, metrics and source references. Use `recommendation_engine.py` with `engine-data.json` for budget calculations. Stable fact and example IDs connect the sections.
+Use this file for the factual narrative and complete build examples. Use `research-pack.json` for structured facts, caps, trait prerequisites, metrics and source references. The current build evidence is the **Build WAR** section (paired native-engine simulations); its fitted models drive the website builder. `recommendation_engine.py` with `engine-data.json` is the legacy recipe engine (DSFL budgets below 250 only). Stable fact and example IDs connect the sections.
+
+All current research (the native attribute matrix and the build-WAR study) uses the native C# port of the game engine (DDSPFHeadless.Native). The stock DDSPF21 engine is permanently retired for research; older studies that used it (the DSFL 40-game screening with finalist confirmation, and the ISFL attribute-cohort games) are kept as labeled history.
 
 ## Scope and evidence
 
-Externally developed and imported ISFL/DSFL rosters. DSFL budget 250; no purchased traits. ISFL maxed includes all attributes and all purchasable portal traits.
+Externally developed and imported ISFL/DSFL rosters. DSFL budget 250; no purchased traits. ISFL maxed templates include all attributes and all purchasable portal traits; the build-WAR rankings use maxed ratings with only the traits whose fitted effect was positive.
 
 Game version: 5.0.11.0. Portal snapshot: 2026-09-21T04:24:15.948833+00:00.
 
-DSFL examples are the highest observed screening-margin profile for each archetype and role: 8,040 screening games and 4,080 confirmation games, four fixed matchups, both treated sides. Screening uses 40 games per arm; finalists use 120 fresh-seed games each in the same matchups. Skills, experience and host teams are held as recorded; injuries are disabled. All 17 simultaneous 95% finalist intervals include zero.
+Earlier study (stock engine, superseded by Build WAR): DSFL examples are the highest observed screening-margin profile for each archetype and role: 8,040 screening games and 4,080 confirmation games, four fixed matchups, both treated sides. Screening uses 40 games per arm; finalists use 120 fresh-seed games each in the same matchups. Skills, experience and host teams are held as recorded; injuries are disabled. All 17 simultaneous 95% finalist intervals include zero.
 
-ISFL examples fund every attribute cap and every purchasable portal trait. Their costs and legality are verified; maxed archetypes have not been compared in head-to-head games. Formula leaders below identify specific mathematical strengths.
+ISFL templates fund every attribute cap and every purchasable portal trait. Their costs and legality are verified; these all-trait templates were not raced head to head (Build WAR measures maxed builds with only the positive-effect traits). Formula leaders below identify specific mathematical strengths.
 
 Source facts describe code; inventory facts summarize reviewed uses. Arithmetic examples illustrate those facts. A named trait with no identified direct effect means no effect was found in the reviewed searchable scope. Automatic TE traits are assumed from the portal; private export mapping remains unverified. Accepted game evidence uses the corrected single-initialization lookup tables.
 
@@ -647,7 +649,106 @@ Each comparison holds the named formula context fixed and uses fully maxed ratin
 | SS | Raw defender contact score | 1472 | Enforcer | G:9779; EXP0 Energy100 before context |
 | K/P | Field-goal kick-power-plus-accuracy component | 200 | Accurate, Power | G:9056+; not complete success probability |
 
+## Build WAR: archetype rankings from paired simulations
+
+WAR here = Wins per regular season above a league-average starter at the same depth-chart slot (tie = half a win), from paired simulations: the build and the baseline play the identical matchups and random seeds. A regular season is 16 games (ISFL), 14 games (DSFL).
+
+Simulated native-engine games across the research program: 10,635,240 (attribute matrix: base: 186,840; attribute matrix: expansion v1: 1,868,400; build WAR: phase1-DSFL: 2,400,000; build WAR: phase1-ISFL: 2,400,000; build WAR: phase2-DSFL: 720,000; build WAR: phase2-ISFL: 720,000; build WAR: phase3-ISFL: 720,000; build WAR: phase3b-ISFL: 864,000; build WAR: phase3c-ISFL: 756,000).
+
+Tested depth-chart slots: Tested as the starting quarterback. Tested as the #1 running back. Fullback tested at fullback, against a fullback baseline (not the running-back baseline). Tested as the #1 wide receiver. Return Specialist is tested as the #1 receiver too, not as a returner. Tested as the starting tight end. Offensive linemen tested at center. Defensive ends tested at left end. Tested at the #1 defensive tackle slot. Linebackers tested at middle linebacker. Tested as the #1 cornerback. Safeties tested at free safety. The kicker also punts: these leagues roster no punter.
+
+Tied with #1 means the paired 95% interval for the gap to the group leader includes zero (the leader row shows —). Traits column: purchased portal traits; kicker cap unlocks follow a slash.
+
+| League | Group | Rank | Archetype | WAR | 95% CI | Tied with #1 | TPE | Traits / unlocks |
+|---|---|---:|---|---:|---|---|---:|---|
+| ISFL | Quarterback | 1 | Gunslinger | +0.11 | [-0.05, +0.27] | — | 1175 | Gunslinger, Athlete |
+| ISFL | Quarterback | 2 | Field General | +0.09 | [-0.07, +0.24] | yes | 1210 | GameManager, Athlete |
+| ISFL | Quarterback | 3 | Pocket Passer | -0.16 | [-0.31, +0.00] | no | 1175 | GameManager, Athlete |
+| ISFL | Quarterback | 4 | Mobile | -0.84 | [-1.00, -0.68] | no | 1150 | Dualthreat, Athlete |
+| ISFL | Quarterback | 5 | Scrambler | -1.06 | [-1.22, -0.91] | no | 1165 | Dualthreat, Athlete |
+| ISFL | Running Back | 1 | Power Back | +1.20 | [+1.04, +1.36] | — | 1295 | ScatBack, RawTalent, Athlete |
+| ISFL | Running Back | 2 | Speed Back | +1.04 | [+0.89, +1.20] | yes | 1285 | RawTalent, Athlete |
+| ISFL | Running Back | 3 | Receiving Back | +0.99 | [+0.83, +1.14] | no | 1295 | ScatBack, RawTalent, Athlete |
+| ISFL | Running Back | 4 | Fullback | +0.30 | [+0.14, +0.46] | no | 1300 | BlockingFB, Athlete, RoleModel |
+| ISFL | Wide Receiver | 1 | Speed Receiver | +0.20 | [+0.04, +0.35] | — | 1160 | Athlete, RoleModel |
+| ISFL | Wide Receiver | 2 | Possession Receiver | +0.08 | [-0.08, +0.24] | yes | 1230 | Athlete, RoleModel |
+| ISFL | Wide Receiver | 3 | Slot Receiver | +0.08 | [-0.08, +0.24] | yes | 1230 | Athlete, RoleModel |
+| ISFL | Wide Receiver | 4 | Return Specialist | +0.05 | [-0.10, +0.21] | yes | 1165 | RoleModel |
+| ISFL | Tight End | 1 | Vertical Threat | +0.33 | [+0.18, +0.49] | — | 1210 | ReceivingTE, RoleModel |
+| ISFL | Tight End | 2 | Blocking TE | +0.28 | [+0.12, +0.43] | yes | 1220 | BlockingTE, RoleModel |
+| ISFL | Tight End | 3 | Possession TE | +0.18 | [+0.02, +0.33] | no | 1220 | ReceivingTE, RoleModel |
+| ISFL | Offensive Lineman | 1 | Athletic Lineman | +0.36 | [+0.21, +0.52] | — | 1280 | TenaciousBlocker, RoleModel |
+| ISFL | Offensive Lineman | 2 | Balanced Lineman | +0.18 | [+0.02, +0.34] | no | 1230 | TenaciousBlocker, RoleModel |
+| ISFL | Offensive Lineman | 3 | Mauler | +0.16 | [-0.00, +0.32] | no | 1245 | TenaciousBlocker, RoleModel |
+| ISFL | Defensive End | 1 | Power Rusher | +0.37 | [+0.21, +0.53] | — | 1225 | BullRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Defensive End | 2 | Speed Rusher | +0.37 | [+0.21, +0.53] | yes | 1215 | SpeedRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Defensive End | 3 | Run Stuffer | +0.35 | [+0.19, +0.51] | yes | 1240 | BullRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Defensive Tackle | 1 | All-Purpose DT | +0.39 | [+0.23, +0.54] | — | 1160 | SpeedRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Defensive Tackle | 2 | Nose Tackle | +0.38 | [+0.22, +0.54] | yes | 1155 | SpeedRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Defensive Tackle | 3 | Interior Rusher | +0.30 | [+0.15, +0.46] | yes | 1195 | SpeedRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Linebacker | 1 | Versatile LB | +0.24 | [+0.08, +0.39] | — | 1230 | BullRusher, Competitor, RoleModel |
+| ISFL | Linebacker | 2 | Coverage LB | +0.23 | [+0.07, +0.38] | yes | 1150 | Competitor, RoleModel |
+| ISFL | Linebacker | 3 | Pass Rusher | +0.01 | [-0.14, +0.17] | no | 1155 | Athlete, RoleModel |
+| ISFL | Cornerback | 1 | Cover Corner | +0.30 | [+0.15, +0.46] | — | 1220 | ShutDownCorner, Perceptive, RoleModel |
+| ISFL | Cornerback | 2 | Slot Corner | +0.05 | [-0.10, +0.21] | no | 1230 | SlotCorner, Perceptive, RoleModel |
+| ISFL | Cornerback | 3 | Physical Corner | +0.04 | [-0.12, +0.19] | no | 1195 | PressCorner, Perceptive, RoleModel |
+| ISFL | Safety | 1 | Ball Hawk | +0.09 | [-0.06, +0.24] | — | 1255 | RoleModel, Competitor, Athlete |
+| ISFL | Safety | 2 | Center Fielder | +0.06 | [-0.09, +0.22] | yes | 1295 | CenterFielder, RoleModel, Competitor, Athlete |
+| ISFL | Safety | 3 | Enforcer | -0.04 | [-0.20, +0.11] | yes | 1300 | BoxSafety, RoleModel, Competitor, Athlete |
+| ISFL | Kicker | 1 | Power | +0.36 | [+0.21, +0.52] | — | 1240 | — / StraightShooter, LaserSights |
+| ISFL | Kicker | 2 | Accurate | +0.36 | [+0.21, +0.52] | yes | 1240 | — / SteelToeBoots, BionicLeg |
+| DSFL | Quarterback | 1 | Field General | +0.32 | [+0.18, +0.47] | — | 249 | — |
+| DSFL | Quarterback | 2 | Pocket Passer | +0.30 | [+0.16, +0.45] | yes | 249 | — |
+| DSFL | Quarterback | 3 | Gunslinger | +0.30 | [+0.15, +0.45] | yes | 249 | — |
+| DSFL | Quarterback | 4 | Scrambler | +0.06 | [-0.09, +0.21] | no | 249 | — |
+| DSFL | Quarterback | 5 | Mobile | +0.04 | [-0.11, +0.18] | no | 249 | — |
+| DSFL | Running Back | 1 | Power Back | +0.41 | [+0.26, +0.55] | — | 250 | — |
+| DSFL | Running Back | 2 | Fullback | +0.26 | [+0.11, +0.40] | yes | 250 | — |
+| DSFL | Running Back | 3 | Receiving Back | +0.25 | [+0.11, +0.40] | no | 250 | — |
+| DSFL | Running Back | 4 | Speed Back | -0.04 | [-0.18, +0.11] | no | 250 | — |
+| DSFL | Wide Receiver | 1 | Possession Receiver | +0.37 | [+0.22, +0.51] | — | 249 | — |
+| DSFL | Wide Receiver | 2 | Slot Receiver | +0.35 | [+0.20, +0.49] | yes | 249 | — |
+| DSFL | Wide Receiver | 3 | Speed Receiver | -0.05 | [-0.20, +0.09] | no | 249 | — |
+| DSFL | Wide Receiver | 4 | Return Specialist | -0.07 | [-0.21, +0.08] | no | 250 | — |
+| DSFL | Tight End | 1 | Possession TE | +0.51 | [+0.37, +0.66] | — | 250 | — |
+| DSFL | Tight End | 2 | Vertical Threat | +0.45 | [+0.31, +0.60] | yes | 250 | — |
+| DSFL | Tight End | 3 | Blocking TE | +0.43 | [+0.28, +0.57] | yes | 250 | — |
+| DSFL | Offensive Lineman | 1 | Athletic Lineman | +0.21 | [+0.07, +0.36] | — | 249 | — |
+| DSFL | Offensive Lineman | 2 | Balanced Lineman | +0.20 | [+0.06, +0.35] | yes | 249 | — |
+| DSFL | Offensive Lineman | 3 | Mauler | +0.12 | [-0.03, +0.26] | yes | 249 | — |
+| DSFL | Defensive End | 1 | Speed Rusher | +0.66 | [+0.52, +0.81] | — | 249 | — |
+| DSFL | Defensive End | 2 | Run Stuffer | +0.62 | [+0.47, +0.76] | yes | 249 | — |
+| DSFL | Defensive End | 3 | Power Rusher | +0.58 | [+0.44, +0.73] | yes | 249 | — |
+| DSFL | Defensive Tackle | 1 | All-Purpose DT | +0.35 | [+0.21, +0.49] | — | 250 | — |
+| DSFL | Defensive Tackle | 2 | Nose Tackle | +0.29 | [+0.15, +0.43] | yes | 250 | — |
+| DSFL | Defensive Tackle | 3 | Interior Rusher | +0.20 | [+0.07, +0.34] | no | 250 | — |
+| DSFL | Linebacker | 1 | Coverage LB | +0.55 | [+0.40, +0.69] | — | 250 | — |
+| DSFL | Linebacker | 2 | Versatile LB | +0.54 | [+0.39, +0.68] | yes | 250 | — |
+| DSFL | Linebacker | 3 | Pass Rusher | +0.45 | [+0.30, +0.59] | yes | 250 | — |
+| DSFL | Cornerback | 1 | Cover Corner | +1.21 | [+1.06, +1.35] | — | 250 | — |
+| DSFL | Cornerback | 2 | Slot Corner | +1.19 | [+1.04, +1.33] | yes | 250 | — |
+| DSFL | Cornerback | 3 | Physical Corner | +1.14 | [+0.99, +1.28] | yes | 250 | — |
+| DSFL | Safety | 1 | Ball Hawk | +0.34 | [+0.19, +0.48] | — | 250 | — |
+| DSFL | Safety | 2 | Enforcer | +0.33 | [+0.19, +0.48] | yes | 250 | — |
+| DSFL | Safety | 3 | Center Fielder | +0.21 | [+0.06, +0.36] | yes | 250 | — |
+| DSFL | Kicker | 1 | Accurate | +0.20 | [+0.14, +0.26] | — | 250 | — |
+| DSFL | Kicker | 2 | Power | +0.14 | [+0.00, +0.29] | yes | 250 | — |
+
+ISFL rankings use fully maxed builds (every rating at its effective cap, every kicker unlock, and each purchasable trait with a positive fitted effect). DSFL rankings use the model-optimal legal 250-TPE build with no purchased traits. `research-pack.json` → `build_war` holds every build, the per-slot fitted win models (exact terms and covariance) and the optimizer definition used by the website builder.
+
+Model calibration (ISFL): every headline build was also measured directly in paired games. Raw model predictions agreed within their 95% range for 34 of 36 builds (chi2 51.05/36 df, p = 0.050). After anchoring each depth-chart slot's level to its direct measurements, the remaining disagreement is chi2 15.44/24 df (p = 0.907). Builder WAR = model WAR + slot anchor: C1 +0.20 ± 0.11, CB1 -0.22 ± 0.11, DT1 +0.19 ± 0.11, FB1 +0.31 ± 0.19, FS1 -0.22 ± 0.11, K1 -0.20 ± 0.12, LE1 +0.03 ± 0.11, MLB1 +0.20 ± 0.11, QB1 -0.09 ± 0.08, RB1 +0.34 ± 0.10, TE1 -0.02 ± 0.11, WR1 +0.05 ± 0.10.
+
+Model calibration (DSFL): every headline build was also measured directly in paired games. Raw model predictions agreed within their 95% range for 31 of 36 builds (chi2 79.05/36 df, p < 0.001). After anchoring each depth-chart slot's level to its direct measurements, the remaining disagreement is chi2 8.45/24 df (p = 0.999). Builder WAR = model WAR + slot anchor: C1 -0.17 ± 0.08, CB1 +0.02 ± 0.08, DT1 -0.05 ± 0.08, FB1 -0.24 ± 0.14, FS1 -0.16 ± 0.08, K1 +0.07 ± 0.07, LE1 -0.17 ± 0.08, MLB1 -0.11 ± 0.08, QB1 -0.46 ± 0.07, RB1 +0.02 ± 0.08, TE1 -0.16 ± 0.09, WR1 -0.06 ± 0.07.
+
+Builder validation (ISFL, builder_validation): 108 builds at 500, 1000, 1700 TPE, 7,000 paired games per slot: predictions within their 95% range for 108 of 108 (chi2 59.0/108, p = 1.000); mean predicted minus measured +0.064 WAR; at 1700 TPE the Builder build beat the fully maxed build for 4 of 36 archetypes and was worse for 0.
+
+Builder validation (ISFL, builder_validation_v1): 72 builds at 800, 1700 TPE, 10,000 paired games per slot: predictions within their 95% range for 43 of 72 (chi2 301.81/72, p < 0.001); mean predicted minus measured +0.365 WAR; at 1700 TPE the Builder build beat the fully maxed build for 3 of 36 archetypes and was worse for 8. Status: rejected: the unconstrained Builder model's cheaper-than-maxed recommendations did not hold up in direct paired tests; replaced by the monotone-constrained Builder model.
+
+Builder validation (ISFL, builder_validation_v2): 108 builds at 500, 1000, 1700 TPE, 8,000 paired games per slot: predictions within their 95% range for 96 of 108 (chi2 191.07/108, p < 0.001); mean predicted minus measured +0.061 WAR; at 1700 TPE the Builder build beat the fully maxed build for 2 of 36 archetypes and was worse for 4. Status: intermediate: monotone model without overrides; its direct results showed QB speed harm is real and the model's RB hands/endurance harm is not, which set the final model's two overrides (the final model is then validated on fresh, unused pairs).
+
 ## Build selector
+
+Legacy recipe engine. The website builder now uses the Build WAR models above for ISFL, and the measured Build WAR builds for DSFL at 250 TPE; this engine remains only for DSFL budgets below 250.
 
 
 The component accepts league, game role, archetype and available TPE. Its visual design is deferred. `recommendation_engine.py` implements the calculation layer without a web framework or external dependencies.
@@ -727,4 +828,5 @@ Paths are relative to the original game workspace and require the original decom
 - `recommendation_engine.py`: runnable budget allocator and exact local-formula optimizer.
 - `component-spec.md`, `component-examples.json`: UI integration contract and request/response fixtures.
 - `mechanics.json`, `build-examples.json`: detailed source records and full measured metrics.
+- `build-war-results.json`: snapshot of the build-WAR export (paired confirmations, fitted per-slot win models, simulation counts).
 - `*-qa.json`, `test_recommendation_engine.py`, `verify_build_examples.py`: independent checks and evidence.

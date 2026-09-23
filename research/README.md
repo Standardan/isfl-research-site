@@ -33,3 +33,7 @@ Run `python verify_knowledge_pack.py` from the extracted bundle to verify transf
 Source aliases refer to paths in the original game workspace and require the original decompilation. The prior evidence archive contains reviewed chapters and game evidence, and excludes complete decompiled source. The original PDF was delivered separately. Portal rules are the recorded September 21, 2026 snapshot.
 
 `manifest.json` lists every packaged file and SHA-256 hash except the manifest itself.
+
+## Update: build WAR (native engine)
+
+All current research uses the native C# port of the game engine; the stock DDSPF21 engine is retired for research. The `build_war` section of research-pack.json (from `build-war-results.json`) ranks every archetype by WAR measured in paired native-engine simulations and supplies the fitted, anchored win models the website builder optimizes. It supersedes the DSFL screening examples and answers the maxed-build performance question for maxed builds with positive-effect traits; statements above about DSFL examples and untested maxed builds describe the earlier stock-engine study. `recommendation_engine.py` is now the legacy recipe engine (DSFL budgets below 250).

@@ -1,3 +1,5 @@
+> **Superseded.** This describes the earlier joint mechanics-proxy builder, which the website no longer uses. The current builder optimizes the build-WAR win models fitted to paired native-engine simulations; see the `build_war` section of research-pack.json and the Build WAR section of LLM-RESEARCH.md.
+
 # Joint attribute and trait recommendations
 
 Version: joint-mechanics-v1. Goal: help spend TPE toward team contribution. **This is a mechanics-informed model, not a calibrated prediction of wins or a demonstrated best game build.** No new ISFL games were run for this release. The DSFL 250-TPE tested examples remain unchanged.
