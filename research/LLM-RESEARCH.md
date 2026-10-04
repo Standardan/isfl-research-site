@@ -651,100 +651,134 @@ Each comparison holds the named formula context fixed and uses fully maxed ratin
 
 ## Build WAR: archetype rankings from paired simulations
 
-WAR here = Wins per regular season above a league-average starter at the same depth-chart slot (tie = half a win), from paired simulations: the build and the baseline play the identical matchups and random seeds. A regular season is 16 games (ISFL), 14 games (DSFL).
+WAR here = Wins per regular season above a league-average starter at the same role (tie = half a win), from paired simulations: the build and the baseline play the identical matchups and random seeds, with the player locked to that role on the depth chart. A regular season is 16 games (ISFL), 14 games (DSFL).
 
-Simulated native-engine games across the research program: 10,635,240 (attribute matrix: base: 186,840; attribute matrix: expansion v1: 1,868,400; build WAR: phase1-DSFL: 2,400,000; build WAR: phase1-ISFL: 2,400,000; build WAR: phase2-DSFL: 720,000; build WAR: phase2-ISFL: 720,000; build WAR: phase3-ISFL: 720,000; build WAR: phase3b-ISFL: 864,000; build WAR: phase3c-ISFL: 756,000).
+Simulated native-engine games across the research program: 21,176,760 (attribute matrix: base: 186,840; attribute matrix: expansion v1: 1,868,400; slot build WAR (superseded): phase1-DSFL: 2,400,000; slot build WAR (superseded): phase1-ISFL: 2,400,000; slot build WAR (superseded): phase2-DSFL: 720,000; slot build WAR (superseded): phase2-ISFL: 720,000; slot build WAR (superseded): phase3-ISFL: 720,000; slot build WAR (superseded): phase3b-ISFL: 864,000; slot build WAR (superseded): phase3c-ISFL: 756,000; role build WAR: phase1-DSFL: 3,600,000; role build WAR: phase1-ISFL: 3,600,000; role build WAR: phase2-DSFL: 1,080,000; role build WAR: phase2-ISFL: 1,080,000; role build WAR: phase3-ISFL: 1,134,000; role build WAR: pilot-purity-DSFL: 17,280; role build WAR: pilot-purity-ISFL: 30,240).
 
-Tested depth-chart slots: Tested as the starting quarterback. Tested as the #1 running back. Fullback tested at fullback, against a fullback baseline (not the running-back baseline). Tested as the #1 wide receiver. Return Specialist is tested as the #1 receiver too, not as a returner. Tested as the starting tight end. Offensive linemen tested at center. Defensive ends tested at left end. Tested at the #1 defensive tackle slot. Linebackers tested at middle linebacker. Tested as the #1 cornerback. Safeties tested at free safety. The kicker also punts: these leagues roster no punter.
+Each archetype is measured at every role it plays on the field, with the player locked to that role on the depth chart (and listed at that role's position): linebackers at middle, left outside and right outside linebacker; corners outside and in the nickel; safeties at free and strong safety; defensive ends on both sides; offensive linemen at center and left tackle. Every team in both leagues plays only the 3-3-5 (about 65% of defensive snaps) and the 3-4. The slot receiver (WR3) is not tested: every team's slot snaps go to players who also play outside receiver or tight end, so no build can be isolated there.
 
-Tied with #1 means the paired 95% interval for the gap to the group leader includes zero (the leader row shows —). Traits column: purchased portal traits; kicker cap unlocks follow a slash.
+Tested roles: Quarterback: The starter under center or in the shotgun on every snap. Running back: The lead back. The engine rotates backs by fatigue, so he plays about two thirds of the snaps. Fullback: On the field in two-back sets, about 56% of snaps; mostly blocks. Outside receiver (WR1): Lines up outside on every snap. Return Specialist is tested here as a receiver, not as a returner. Tight end (TE1): On the field almost every snap; runs routes on about three quarters of passes and blocks on the rest. Center: Snaps the ball and blocks the middle of the line. Left tackle: Blocks the left edge of the line. Left end: Rushes the passer from the left of the three-man front. Right end: Rushes the passer from the right of the three-man front. Nose / defensive tackle: Rushes the passer from the middle of the three-man front. Middle linebacker: Mostly drops into zones or covers a man; rarely sacks the quarterback. Left outside linebacker: Blitzes off the edge, and with the right outside linebacker is the team's main source of sacks and tackles for loss. Right outside linebacker: Blitzes off the edge with more man coverage than the left side, and is the team's leading tackler. Outside corner (CB1): Plays man coverage on almost every pass. Nickel corner (NB1): The fifth defensive back, on the field only in the 3-3-5 (about 65% of snaps). Free safety: Gives deep zone help. Strong safety: Plays shorter zones and blitzes more than the free safety, with twice his sacks. Kicker (also punts): Also punts: these leagues roster no punter.
 
-| League | Group | Rank | Archetype | WAR | 95% CI | Tied with #1 | TPE | Traits / unlocks |
-|---|---|---:|---|---:|---|---|---:|---|
-| ISFL | Quarterback | 1 | Gunslinger | +0.11 | [-0.05, +0.27] | — | 1175 | Gunslinger, Athlete |
-| ISFL | Quarterback | 2 | Field General | +0.09 | [-0.07, +0.24] | yes | 1210 | GameManager, Athlete |
-| ISFL | Quarterback | 3 | Pocket Passer | -0.16 | [-0.31, +0.00] | no | 1175 | GameManager, Athlete |
-| ISFL | Quarterback | 4 | Mobile | -0.84 | [-1.00, -0.68] | no | 1150 | Dualthreat, Athlete |
-| ISFL | Quarterback | 5 | Scrambler | -1.06 | [-1.22, -0.91] | no | 1165 | Dualthreat, Athlete |
-| ISFL | Running Back | 1 | Power Back | +1.20 | [+1.04, +1.36] | — | 1295 | ScatBack, RawTalent, Athlete |
-| ISFL | Running Back | 2 | Speed Back | +1.04 | [+0.89, +1.20] | yes | 1285 | RawTalent, Athlete |
-| ISFL | Running Back | 3 | Receiving Back | +0.99 | [+0.83, +1.14] | no | 1295 | ScatBack, RawTalent, Athlete |
-| ISFL | Running Back | 4 | Fullback | +0.30 | [+0.14, +0.46] | no | 1300 | BlockingFB, Athlete, RoleModel |
-| ISFL | Wide Receiver | 1 | Speed Receiver | +0.20 | [+0.04, +0.35] | — | 1160 | Athlete, RoleModel |
-| ISFL | Wide Receiver | 2 | Possession Receiver | +0.08 | [-0.08, +0.24] | yes | 1230 | Athlete, RoleModel |
-| ISFL | Wide Receiver | 3 | Slot Receiver | +0.08 | [-0.08, +0.24] | yes | 1230 | Athlete, RoleModel |
-| ISFL | Wide Receiver | 4 | Return Specialist | +0.05 | [-0.10, +0.21] | yes | 1165 | RoleModel |
-| ISFL | Tight End | 1 | Vertical Threat | +0.33 | [+0.18, +0.49] | — | 1210 | ReceivingTE, RoleModel |
-| ISFL | Tight End | 2 | Blocking TE | +0.28 | [+0.12, +0.43] | yes | 1220 | BlockingTE, RoleModel |
-| ISFL | Tight End | 3 | Possession TE | +0.18 | [+0.02, +0.33] | no | 1220 | ReceivingTE, RoleModel |
-| ISFL | Offensive Lineman | 1 | Athletic Lineman | +0.36 | [+0.21, +0.52] | — | 1280 | TenaciousBlocker, RoleModel |
-| ISFL | Offensive Lineman | 2 | Balanced Lineman | +0.18 | [+0.02, +0.34] | no | 1230 | TenaciousBlocker, RoleModel |
-| ISFL | Offensive Lineman | 3 | Mauler | +0.16 | [-0.00, +0.32] | no | 1245 | TenaciousBlocker, RoleModel |
-| ISFL | Defensive End | 1 | Power Rusher | +0.37 | [+0.21, +0.53] | — | 1225 | BullRusher, Competitor, Perceptive, RoleModel |
-| ISFL | Defensive End | 2 | Speed Rusher | +0.37 | [+0.21, +0.53] | yes | 1215 | SpeedRusher, Competitor, Perceptive, RoleModel |
-| ISFL | Defensive End | 3 | Run Stuffer | +0.35 | [+0.19, +0.51] | yes | 1240 | BullRusher, Competitor, Perceptive, RoleModel |
-| ISFL | Defensive Tackle | 1 | All-Purpose DT | +0.39 | [+0.23, +0.54] | — | 1160 | SpeedRusher, Competitor, Perceptive, RoleModel |
-| ISFL | Defensive Tackle | 2 | Nose Tackle | +0.38 | [+0.22, +0.54] | yes | 1155 | SpeedRusher, Competitor, Perceptive, RoleModel |
-| ISFL | Defensive Tackle | 3 | Interior Rusher | +0.30 | [+0.15, +0.46] | yes | 1195 | SpeedRusher, Competitor, Perceptive, RoleModel |
-| ISFL | Linebacker | 1 | Versatile LB | +0.24 | [+0.08, +0.39] | — | 1230 | BullRusher, Competitor, RoleModel |
-| ISFL | Linebacker | 2 | Coverage LB | +0.23 | [+0.07, +0.38] | yes | 1150 | Competitor, RoleModel |
-| ISFL | Linebacker | 3 | Pass Rusher | +0.01 | [-0.14, +0.17] | no | 1155 | Athlete, RoleModel |
-| ISFL | Cornerback | 1 | Cover Corner | +0.30 | [+0.15, +0.46] | — | 1220 | ShutDownCorner, Perceptive, RoleModel |
-| ISFL | Cornerback | 2 | Slot Corner | +0.05 | [-0.10, +0.21] | no | 1230 | SlotCorner, Perceptive, RoleModel |
-| ISFL | Cornerback | 3 | Physical Corner | +0.04 | [-0.12, +0.19] | no | 1195 | PressCorner, Perceptive, RoleModel |
-| ISFL | Safety | 1 | Ball Hawk | +0.09 | [-0.06, +0.24] | — | 1255 | RoleModel, Competitor, Athlete |
-| ISFL | Safety | 2 | Center Fielder | +0.06 | [-0.09, +0.22] | yes | 1295 | CenterFielder, RoleModel, Competitor, Athlete |
-| ISFL | Safety | 3 | Enforcer | -0.04 | [-0.20, +0.11] | yes | 1300 | BoxSafety, RoleModel, Competitor, Athlete |
-| ISFL | Kicker | 1 | Power | +0.36 | [+0.21, +0.52] | — | 1240 | — / StraightShooter, LaserSights |
-| ISFL | Kicker | 2 | Accurate | +0.36 | [+0.21, +0.52] | yes | 1240 | — / SteelToeBoots, BionicLeg |
-| DSFL | Quarterback | 1 | Field General | +0.32 | [+0.18, +0.47] | — | 249 | — |
-| DSFL | Quarterback | 2 | Pocket Passer | +0.30 | [+0.16, +0.45] | yes | 249 | — |
-| DSFL | Quarterback | 3 | Gunslinger | +0.30 | [+0.15, +0.45] | yes | 249 | — |
-| DSFL | Quarterback | 4 | Scrambler | +0.06 | [-0.09, +0.21] | no | 249 | — |
-| DSFL | Quarterback | 5 | Mobile | +0.04 | [-0.11, +0.18] | no | 249 | — |
-| DSFL | Running Back | 1 | Power Back | +0.41 | [+0.26, +0.55] | — | 250 | — |
-| DSFL | Running Back | 2 | Fullback | +0.26 | [+0.11, +0.40] | yes | 250 | — |
-| DSFL | Running Back | 3 | Receiving Back | +0.25 | [+0.11, +0.40] | no | 250 | — |
-| DSFL | Running Back | 4 | Speed Back | -0.04 | [-0.18, +0.11] | no | 250 | — |
-| DSFL | Wide Receiver | 1 | Possession Receiver | +0.37 | [+0.22, +0.51] | — | 249 | — |
-| DSFL | Wide Receiver | 2 | Slot Receiver | +0.35 | [+0.20, +0.49] | yes | 249 | — |
-| DSFL | Wide Receiver | 3 | Speed Receiver | -0.05 | [-0.20, +0.09] | no | 249 | — |
-| DSFL | Wide Receiver | 4 | Return Specialist | -0.07 | [-0.21, +0.08] | no | 250 | — |
-| DSFL | Tight End | 1 | Possession TE | +0.51 | [+0.37, +0.66] | — | 250 | — |
-| DSFL | Tight End | 2 | Vertical Threat | +0.45 | [+0.31, +0.60] | yes | 250 | — |
-| DSFL | Tight End | 3 | Blocking TE | +0.43 | [+0.28, +0.57] | yes | 250 | — |
-| DSFL | Offensive Lineman | 1 | Athletic Lineman | +0.21 | [+0.07, +0.36] | — | 249 | — |
-| DSFL | Offensive Lineman | 2 | Balanced Lineman | +0.20 | [+0.06, +0.35] | yes | 249 | — |
-| DSFL | Offensive Lineman | 3 | Mauler | +0.12 | [-0.03, +0.26] | yes | 249 | — |
-| DSFL | Defensive End | 1 | Speed Rusher | +0.66 | [+0.52, +0.81] | — | 249 | — |
-| DSFL | Defensive End | 2 | Run Stuffer | +0.62 | [+0.47, +0.76] | yes | 249 | — |
-| DSFL | Defensive End | 3 | Power Rusher | +0.58 | [+0.44, +0.73] | yes | 249 | — |
-| DSFL | Defensive Tackle | 1 | All-Purpose DT | +0.35 | [+0.21, +0.49] | — | 250 | — |
-| DSFL | Defensive Tackle | 2 | Nose Tackle | +0.29 | [+0.15, +0.43] | yes | 250 | — |
-| DSFL | Defensive Tackle | 3 | Interior Rusher | +0.20 | [+0.07, +0.34] | no | 250 | — |
-| DSFL | Linebacker | 1 | Coverage LB | +0.55 | [+0.40, +0.69] | — | 250 | — |
-| DSFL | Linebacker | 2 | Versatile LB | +0.54 | [+0.39, +0.68] | yes | 250 | — |
-| DSFL | Linebacker | 3 | Pass Rusher | +0.45 | [+0.30, +0.59] | yes | 250 | — |
-| DSFL | Cornerback | 1 | Cover Corner | +1.21 | [+1.06, +1.35] | — | 250 | — |
-| DSFL | Cornerback | 2 | Slot Corner | +1.19 | [+1.04, +1.33] | yes | 250 | — |
-| DSFL | Cornerback | 3 | Physical Corner | +1.14 | [+0.99, +1.28] | yes | 250 | — |
-| DSFL | Safety | 1 | Ball Hawk | +0.34 | [+0.19, +0.48] | — | 250 | — |
-| DSFL | Safety | 2 | Enforcer | +0.33 | [+0.19, +0.48] | yes | 250 | — |
-| DSFL | Safety | 3 | Center Fielder | +0.21 | [+0.06, +0.36] | yes | 250 | — |
-| DSFL | Kicker | 1 | Accurate | +0.20 | [+0.14, +0.26] | — | 250 | — |
-| DSFL | Kicker | 2 | Power | +0.14 | [+0.00, +0.29] | yes | 250 | — |
+Ranks are within a role. Tied with #1 means the paired 95% interval for the gap to that role's leader includes zero (the leader row shows —). Traits column: purchased portal traits; kicker cap unlocks follow a slash.
 
-ISFL rankings use fully maxed builds (every rating at its effective cap, every kicker unlock, and each purchasable trait with a positive fitted effect). DSFL rankings use the model-optimal legal 250-TPE build with no purchased traits. `research-pack.json` → `build_war` holds every build, the per-slot fitted win models (exact terms and covariance) and the optimizer definition used by the website builder.
+| League | Group | Role | Rank | Archetype | WAR | 95% CI | Tied with #1 | TPE | Traits / unlocks |
+|---|---|---|---:|---|---:|---|---|---:|---|
+| ISFL | Quarterback | Quarterback | 1 | Gunslinger | +0.00 | [-0.16, +0.16] | — | 1225 | Gunslinger, RoleModel, Athlete |
+| ISFL | Quarterback | Quarterback | 2 | Field General | -0.03 | [-0.18, +0.13] | yes | 1260 | GameManager, RoleModel, Athlete |
+| ISFL | Quarterback | Quarterback | 3 | Pocket Passer | -0.32 | [-0.48, -0.16] | no | 1225 | GameManager, RoleModel, Athlete |
+| ISFL | Quarterback | Quarterback | 4 | Mobile | -0.91 | [-1.06, -0.75] | no | 1200 | RoleModel, Dualthreat, Athlete |
+| ISFL | Quarterback | Quarterback | 5 | Scrambler | -1.21 | [-1.37, -1.06] | no | 1215 | RoleModel, Dualthreat, Athlete |
+| ISFL | Running Back | Running back | 1 | Speed Back | +1.17 | [+1.01, +1.32] | — | 1335 | RawTalent, Athlete, RoleModel |
+| ISFL | Running Back | Running back | 2 | Power Back | +1.15 | [+0.99, +1.31] | yes | 1345 | ScatBack, RawTalent, Athlete, RoleModel |
+| ISFL | Running Back | Running back | 3 | Receiving Back | +0.99 | [+0.83, +1.14] | no | 1345 | ScatBack, RawTalent, Athlete, RoleModel |
+| ISFL | Running Back | Fullback | 1 | Fullback | +0.20 | [+0.05, +0.36] | — | 1300 | BlockingFB, Athlete, RoleModel |
+| ISFL | Wide Receiver | Outside receiver (WR1) | 1 | Return Specialist | +0.12 | [-0.04, +0.28] | — | 1165 | RoleModel |
+| ISFL | Wide Receiver | Outside receiver (WR1) | 2 | Possession Receiver | +0.11 | [-0.04, +0.27] | yes | 1180 | RoleModel |
+| ISFL | Wide Receiver | Outside receiver (WR1) | 3 | Speed Receiver | +0.07 | [-0.08, +0.23] | yes | 1160 | DeepThreat, RoleModel |
+| ISFL | Wide Receiver | Outside receiver (WR1) | 4 | Slot Receiver | +0.03 | [-0.13, +0.18] | yes | 1180 | RoleModel |
+| ISFL | Tight End | Tight end (TE1) | 1 | Blocking TE | +0.29 | [+0.13, +0.44] | — | 1220 | BlockingTE, RoleModel |
+| ISFL | Tight End | Tight end (TE1) | 2 | Possession TE | +0.18 | [+0.03, +0.34] | yes | 1070 | RoleModel |
+| ISFL | Tight End | Tight end (TE1) | 3 | Vertical Threat | +0.10 | [-0.05, +0.26] | no | 1060 | RoleModel |
+| ISFL | Offensive Lineman | Center | 1 | Athletic Lineman | +0.19 | [+0.04, +0.35] | — | 1280 | TenaciousBlocker, RoleModel |
+| ISFL | Offensive Lineman | Center | 2 | Balanced Lineman | +0.19 | [+0.03, +0.35] | yes | 1230 | TenaciousBlocker, RoleModel |
+| ISFL | Offensive Lineman | Center | 3 | Mauler | +0.01 | [-0.14, +0.17] | no | 1245 | TenaciousBlocker, RoleModel |
+| ISFL | Offensive Lineman | Left tackle | 1 | Athletic Lineman | +0.25 | [+0.10, +0.41] | — | 1280 | TenaciousBlocker, RoleModel |
+| ISFL | Offensive Lineman | Left tackle | 2 | Balanced Lineman | +0.23 | [+0.07, +0.39] | yes | 1230 | TenaciousBlocker, RoleModel |
+| ISFL | Offensive Lineman | Left tackle | 3 | Mauler | +0.07 | [-0.08, +0.23] | no | 1245 | TenaciousBlocker, RoleModel |
+| ISFL | Defensive End | Left end | 1 | Power Rusher | +0.47 | [+0.31, +0.62] | — | 1225 | BullRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Defensive End | Left end | 2 | Run Stuffer | +0.45 | [+0.29, +0.60] | yes | 1240 | BullRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Defensive End | Left end | 3 | Speed Rusher | +0.31 | [+0.15, +0.47] | no | 1215 | SpeedRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Defensive End | Right end | 1 | Run Stuffer | +0.54 | [+0.39, +0.70] | — | 1190 | BullRusher, Perceptive, RoleModel |
+| ISFL | Defensive End | Right end | 2 | Power Rusher | +0.46 | [+0.30, +0.62] | yes | 1175 | BullRusher, Perceptive, RoleModel |
+| ISFL | Defensive End | Right end | 3 | Speed Rusher | +0.41 | [+0.25, +0.56] | yes | 1165 | SpeedRusher, Perceptive, RoleModel |
+| ISFL | Defensive Tackle | Nose / defensive tackle | 1 | All-Purpose DT | +0.52 | [+0.36, +0.67] | — | 1235 | BullRusher, SpeedRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Defensive Tackle | Nose / defensive tackle | 2 | Nose Tackle | +0.50 | [+0.34, +0.66] | yes | 1230 | BullRusher, SpeedRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Defensive Tackle | Nose / defensive tackle | 3 | Interior Rusher | +0.43 | [+0.28, +0.59] | yes | 1270 | BullRusher, SpeedRusher, Competitor, Perceptive, RoleModel |
+| ISFL | Linebacker | Middle linebacker | 1 | Versatile LB | +0.23 | [+0.07, +0.38] | — | 1180 | BullRusher, Competitor |
+| ISFL | Linebacker | Middle linebacker | 2 | Coverage LB | +0.21 | [+0.05, +0.36] | yes | 1200 | Perceptive, Competitor |
+| ISFL | Linebacker | Middle linebacker | 3 | Pass Rusher | +0.16 | [+0.01, +0.32] | yes | 1205 | SpeedRusher, Athlete |
+| ISFL | Linebacker | Left outside linebacker | 1 | Coverage LB | +0.34 | [+0.18, +0.50] | — | 1250 | Perceptive, Competitor, RoleModel |
+| ISFL | Linebacker | Left outside linebacker | 2 | Pass Rusher | +0.28 | [+0.12, +0.43] | yes | 1255 | SpeedRusher, Athlete, RoleModel |
+| ISFL | Linebacker | Left outside linebacker | 3 | Versatile LB | +0.26 | [+0.10, +0.42] | yes | 1230 | BullRusher, Competitor, RoleModel |
+| ISFL | Linebacker | Right outside linebacker | 1 | Pass Rusher | +0.21 | [+0.05, +0.37] | — | 1255 | SpeedRusher, Athlete, RoleModel |
+| ISFL | Linebacker | Right outside linebacker | 2 | Versatile LB | +0.15 | [-0.00, +0.31] | yes | 1180 | BullRusher, RoleModel |
+| ISFL | Linebacker | Right outside linebacker | 3 | Coverage LB | +0.08 | [-0.07, +0.24] | yes | 1100 | RoleModel |
+| ISFL | Cornerback | Outside corner (CB1) | 1 | Cover Corner | +0.32 | [+0.16, +0.47] | — | 1320 | ShutDownCorner, Perceptive, RoleModel, Competitor, Athlete |
+| ISFL | Cornerback | Outside corner (CB1) | 2 | Physical Corner | +0.18 | [+0.02, +0.33] | yes | 1295 | PressCorner, Perceptive, RoleModel, Competitor, Athlete |
+| ISFL | Cornerback | Outside corner (CB1) | 3 | Slot Corner | +0.15 | [-0.00, +0.31] | no | 1280 | Perceptive, RoleModel, Competitor, Athlete |
+| ISFL | Cornerback | Nickel corner (NB1) | 1 | Cover Corner | +0.41 | [+0.25, +0.57] | — | 1220 | Perceptive, Competitor, Athlete |
+| ISFL | Cornerback | Nickel corner (NB1) | 2 | Physical Corner | +0.39 | [+0.23, +0.56] | yes | 1245 | PressCorner, Perceptive, Competitor, Athlete |
+| ISFL | Cornerback | Nickel corner (NB1) | 3 | Slot Corner | +0.32 | [+0.15, +0.48] | yes | 1280 | SlotCorner, Perceptive, Competitor, Athlete |
+| ISFL | Safety | Free safety | 1 | Ball Hawk | +0.04 | [-0.12, +0.19] | — | 1255 | RoleModel, Competitor, Athlete |
+| ISFL | Safety | Free safety | 2 | Center Fielder | -0.06 | [-0.22, +0.09] | yes | 1245 | RoleModel, Competitor, Athlete |
+| ISFL | Safety | Free safety | 3 | Enforcer | -0.14 | [-0.29, +0.02] | no | 1300 | BoxSafety, RoleModel, Competitor, Athlete |
+| ISFL | Safety | Strong safety | 1 | Center Fielder | +0.44 | [+0.29, +0.60] | — | 1245 | CenterFielder, RoleModel, Competitor |
+| ISFL | Safety | Strong safety | 2 | Ball Hawk | +0.38 | [+0.22, +0.53] | yes | 1255 | Perceptive, RoleModel, Competitor |
+| ISFL | Safety | Strong safety | 3 | Enforcer | +0.21 | [+0.05, +0.36] | no | 1200 | RoleModel, Competitor |
+| ISFL | Kicker | Kicker (also punts) | 1 | Power | +0.20 | [+0.04, +0.36] | — | 1240 | — / StraightShooter, LaserSights |
+| ISFL | Kicker | Kicker (also punts) | 2 | Accurate | +0.20 | [+0.04, +0.36] | yes | 1240 | — / SteelToeBoots, BionicLeg |
+| DSFL | Quarterback | Quarterback | 1 | Pocket Passer | +0.59 | [+0.45, +0.73] | — | 249 | — |
+| DSFL | Quarterback | Quarterback | 2 | Gunslinger | +0.49 | [+0.34, +0.63] | yes | 249 | — |
+| DSFL | Quarterback | Quarterback | 3 | Field General | +0.43 | [+0.29, +0.58] | no | 249 | — |
+| DSFL | Quarterback | Quarterback | 4 | Mobile | +0.29 | [+0.14, +0.43] | no | 249 | — |
+| DSFL | Quarterback | Quarterback | 5 | Scrambler | +0.28 | [+0.14, +0.43] | no | 249 | — |
+| DSFL | Running Back | Running back | 1 | Receiving Back | +0.17 | [+0.03, +0.32] | — | 249 | — |
+| DSFL | Running Back | Running back | 2 | Power Back | +0.08 | [-0.06, +0.23] | yes | 249 | — |
+| DSFL | Running Back | Running back | 3 | Speed Back | +0.03 | [-0.11, +0.18] | yes | 249 | — |
+| DSFL | Running Back | Fullback | 1 | Fullback | +0.16 | [+0.01, +0.31] | — | 250 | — |
+| DSFL | Wide Receiver | Outside receiver (WR1) | 1 | Possession Receiver | +0.46 | [+0.31, +0.60] | — | 250 | — |
+| DSFL | Wide Receiver | Outside receiver (WR1) | 2 | Slot Receiver | +0.29 | [+0.14, +0.43] | no | 250 | — |
+| DSFL | Wide Receiver | Outside receiver (WR1) | 3 | Speed Receiver | -0.05 | [-0.19, +0.10] | no | 250 | — |
+| DSFL | Wide Receiver | Outside receiver (WR1) | 4 | Return Specialist | -0.08 | [-0.22, +0.07] | no | 250 | — |
+| DSFL | Tight End | Tight end (TE1) | 1 | Possession TE | +0.52 | [+0.38, +0.67] | — | 250 | — |
+| DSFL | Tight End | Tight end (TE1) | 2 | Blocking TE | +0.45 | [+0.30, +0.60] | yes | 250 | — |
+| DSFL | Tight End | Tight end (TE1) | 3 | Vertical Threat | +0.31 | [+0.17, +0.46] | no | 250 | — |
+| DSFL | Offensive Lineman | Center | 1 | Athletic Lineman | +0.32 | [+0.17, +0.47] | — | 249 | — |
+| DSFL | Offensive Lineman | Center | 2 | Balanced Lineman | +0.30 | [+0.15, +0.45] | yes | 249 | — |
+| DSFL | Offensive Lineman | Center | 3 | Mauler | +0.04 | [-0.10, +0.19] | no | 249 | — |
+| DSFL | Offensive Lineman | Left tackle | 1 | Mauler | +0.10 | [-0.04, +0.24] | — | 250 | — |
+| DSFL | Offensive Lineman | Left tackle | 2 | Balanced Lineman | +0.07 | [-0.07, +0.22] | yes | 250 | — |
+| DSFL | Offensive Lineman | Left tackle | 3 | Athletic Lineman | +0.07 | [-0.07, +0.22] | yes | 250 | — |
+| DSFL | Defensive End | Left end | 1 | Power Rusher | +0.60 | [+0.45, +0.75] | — | 249 | — |
+| DSFL | Defensive End | Left end | 2 | Speed Rusher | +0.58 | [+0.43, +0.72] | yes | 249 | — |
+| DSFL | Defensive End | Left end | 3 | Run Stuffer | +0.52 | [+0.37, +0.66] | yes | 249 | — |
+| DSFL | Defensive End | Right end | 1 | Power Rusher | +0.25 | [+0.10, +0.40] | — | 249 | — |
+| DSFL | Defensive End | Right end | 2 | Run Stuffer | +0.18 | [+0.04, +0.33] | yes | 249 | — |
+| DSFL | Defensive End | Right end | 3 | Speed Rusher | +0.15 | [+0.00, +0.30] | yes | 250 | — |
+| DSFL | Defensive Tackle | Nose / defensive tackle | 1 | Interior Rusher | +0.22 | [+0.07, +0.37] | — | 250 | — |
+| DSFL | Defensive Tackle | Nose / defensive tackle | 2 | All-Purpose DT | +0.20 | [+0.06, +0.35] | yes | 250 | — |
+| DSFL | Defensive Tackle | Nose / defensive tackle | 3 | Nose Tackle | +0.20 | [+0.06, +0.35] | yes | 250 | — |
+| DSFL | Linebacker | Middle linebacker | 1 | Versatile LB | +0.52 | [+0.38, +0.67] | — | 250 | — |
+| DSFL | Linebacker | Middle linebacker | 2 | Pass Rusher | +0.44 | [+0.30, +0.59] | yes | 250 | — |
+| DSFL | Linebacker | Middle linebacker | 3 | Coverage LB | +0.28 | [+0.14, +0.43] | no | 250 | — |
+| DSFL | Linebacker | Left outside linebacker | 1 | Versatile LB | +0.33 | [+0.18, +0.48] | — | 250 | — |
+| DSFL | Linebacker | Left outside linebacker | 2 | Coverage LB | +0.17 | [+0.02, +0.31] | no | 250 | — |
+| DSFL | Linebacker | Left outside linebacker | 3 | Pass Rusher | +0.15 | [+0.00, +0.30] | no | 250 | — |
+| DSFL | Linebacker | Right outside linebacker | 1 | Versatile LB | +0.34 | [+0.19, +0.48] | — | 250 | — |
+| DSFL | Linebacker | Right outside linebacker | 2 | Coverage LB | +0.19 | [+0.04, +0.33] | no | 250 | — |
+| DSFL | Linebacker | Right outside linebacker | 3 | Pass Rusher | +0.13 | [-0.02, +0.27] | no | 250 | — |
+| DSFL | Cornerback | Outside corner (CB1) | 1 | Slot Corner | +1.17 | [+1.02, +1.32] | — | 250 | — |
+| DSFL | Cornerback | Outside corner (CB1) | 2 | Cover Corner | +1.13 | [+0.99, +1.28] | yes | 250 | — |
+| DSFL | Cornerback | Outside corner (CB1) | 3 | Physical Corner | +1.06 | [+0.92, +1.21] | yes | 250 | — |
+| DSFL | Cornerback | Nickel corner (NB1) | 1 | Physical Corner | +0.45 | [+0.30, +0.59] | — | 250 | — |
+| DSFL | Cornerback | Nickel corner (NB1) | 2 | Slot Corner | +0.35 | [+0.21, +0.50] | yes | 250 | — |
+| DSFL | Cornerback | Nickel corner (NB1) | 3 | Cover Corner | +0.28 | [+0.13, +0.43] | no | 250 | — |
+| DSFL | Safety | Free safety | 1 | Center Fielder | +0.40 | [+0.26, +0.55] | — | 250 | — |
+| DSFL | Safety | Free safety | 2 | Ball Hawk | +0.38 | [+0.23, +0.53] | yes | 250 | — |
+| DSFL | Safety | Free safety | 3 | Enforcer | +0.31 | [+0.16, +0.46] | yes | 250 | — |
+| DSFL | Safety | Strong safety | 1 | Enforcer | +0.33 | [+0.18, +0.47] | — | 250 | — |
+| DSFL | Safety | Strong safety | 2 | Center Fielder | +0.27 | [+0.12, +0.41] | yes | 250 | — |
+| DSFL | Safety | Strong safety | 3 | Ball Hawk | +0.24 | [+0.09, +0.38] | yes | 250 | — |
+| DSFL | Kicker | Kicker (also punts) | 1 | Power | +0.29 | [+0.14, +0.43] | — | 250 | — |
+| DSFL | Kicker | Kicker (also punts) | 2 | Accurate | +0.18 | [+0.12, +0.24] | yes | 250 | — |
 
-Model calibration (ISFL): every headline build was also measured directly in paired games. Raw model predictions agreed within their 95% range for 34 of 36 builds (chi2 51.05/36 df, p = 0.050). After anchoring each depth-chart slot's level to its direct measurements, the remaining disagreement is chi2 15.44/24 df (p = 0.907). Builder WAR = model WAR + slot anchor: C1 +0.20 ± 0.11, CB1 -0.22 ± 0.11, DT1 +0.19 ± 0.11, FB1 +0.31 ± 0.19, FS1 -0.22 ± 0.11, K1 -0.20 ± 0.12, LE1 +0.03 ± 0.11, MLB1 +0.20 ± 0.11, QB1 -0.09 ± 0.08, RB1 +0.34 ± 0.10, TE1 -0.02 ± 0.11, WR1 +0.05 ± 0.10.
+ISFL rankings use fully maxed builds (every rating at its effective cap, every kicker unlock, and each purchasable trait with a positive fitted effect). DSFL rankings use the model-optimal legal 250-TPE build with no purchased traits. `research-pack.json` → `build_war` holds every build, the per-role fitted win models (exact terms and covariance) and the optimizer definition used by the website builder.
 
-Model calibration (DSFL): every headline build was also measured directly in paired games. Raw model predictions agreed within their 95% range for 31 of 36 builds (chi2 79.05/36 df, p < 0.001). After anchoring each depth-chart slot's level to its direct measurements, the remaining disagreement is chi2 8.45/24 df (p = 0.999). Builder WAR = model WAR + slot anchor: C1 -0.17 ± 0.08, CB1 +0.02 ± 0.08, DT1 -0.05 ± 0.08, FB1 -0.24 ± 0.14, FS1 -0.16 ± 0.08, K1 +0.07 ± 0.07, LE1 -0.17 ± 0.08, MLB1 -0.11 ± 0.08, QB1 -0.46 ± 0.07, RB1 +0.02 ± 0.08, TE1 -0.16 ± 0.09, WR1 -0.06 ± 0.07.
+Model calibration (ISFL): every headline build was also measured directly in paired games. Raw model predictions agreed within their 95% range for 45 of 54 builds (chi2 94.71/54 df, p < 0.001). After anchoring each role's level to its direct measurements, the remaining disagreement is chi2 36.75/36 df (p = 0.434). Builder WAR = model WAR + role anchor: C +0.13 ± 0.11, CB1 -0.14 ± 0.11, DT1 +0.04 ± 0.11, FB +0.02 ± 0.20, FS -0.05 ± 0.11, K -0.27 ± 0.12, LE +0.09 ± 0.11, LOLB +0.06 ± 0.11, LT +0.17 ± 0.11, MLB1 +0.11 ± 0.11, NB1 +0.06 ± 0.12, QB -0.29 ± 0.08, RB +0.42 ± 0.10, RE +0.39 ± 0.11, ROLB +0.09 ± 0.11, SS +0.18 ± 0.11, TE1 -0.07 ± 0.11, WR1 +0.02 ± 0.10.
 
-Builder validation (ISFL, builder_validation): 108 builds at 500, 1000, 1700 TPE, 7,000 paired games per slot: predictions within their 95% range for 108 of 108 (chi2 59.0/108, p = 1.000); mean predicted minus measured +0.064 WAR; at 1700 TPE the Builder build beat the fully maxed build for 4 of 36 archetypes and was worse for 0.
+Model calibration (DSFL): every headline build was also measured directly in paired games. Raw model predictions agreed within their 95% range for 40 of 54 builds (chi2 139.81/54 df, p < 0.001). After anchoring each role's level to its direct measurements, the remaining disagreement is chi2 15.1/36 df (p = 0.999). Builder WAR = model WAR + role anchor: C -0.19 ± 0.08, CB1 -0.09 ± 0.08, DT1 -0.25 ± 0.08, FB -0.25 ± 0.15, FS -0.17 ± 0.08, K +0.02 ± 0.07, LE -0.25 ± 0.08, LOLB -0.07 ± 0.08, LT -0.34 ± 0.08, MLB1 -0.19 ± 0.08, NB1 -0.29 ± 0.08, QB -0.21 ± 0.07, RB -0.29 ± 0.09, RE -0.12 ± 0.08, ROLB -0.19 ± 0.08, SS -0.30 ± 0.08, TE1 -0.20 ± 0.09, WR1 -0.14 ± 0.07.
 
-Builder validation (ISFL, builder_validation_v1): 72 builds at 800, 1700 TPE, 10,000 paired games per slot: predictions within their 95% range for 43 of 72 (chi2 301.81/72, p < 0.001); mean predicted minus measured +0.365 WAR; at 1700 TPE the Builder build beat the fully maxed build for 3 of 36 archetypes and was worse for 8. Status: rejected: the unconstrained Builder model's cheaper-than-maxed recommendations did not hold up in direct paired tests; replaced by the monotone-constrained Builder model.
-
-Builder validation (ISFL, builder_validation_v2): 108 builds at 500, 1000, 1700 TPE, 8,000 paired games per slot: predictions within their 95% range for 96 of 108 (chi2 191.07/108, p < 0.001); mean predicted minus measured +0.061 WAR; at 1700 TPE the Builder build beat the fully maxed build for 2 of 36 archetypes and was worse for 4. Status: intermediate: monotone model without overrides; its direct results showed QB speed harm is real and the model's RB hands/endurance harm is not, which set the final model's two overrides (the final model is then validated on fresh, unused pairs).
+Builder validation (ISFL, builder_validation): 162 builds at 500, 1000, 1700 TPE, 7,000 paired games per role: predictions within their 95% range for 157 of 162 (chi2 111.42/162, p = 0.999); mean predicted minus measured +0.039 WAR; at 1700 TPE the Builder build beat the fully maxed build for 6 of 54 archetype-role builds and was worse for 0.
 
 ## Build selector
 
@@ -828,5 +862,5 @@ Paths are relative to the original game workspace and require the original decom
 - `recommendation_engine.py`: runnable budget allocator and exact local-formula optimizer.
 - `component-spec.md`, `component-examples.json`: UI integration contract and request/response fixtures.
 - `mechanics.json`, `build-examples.json`: detailed source records and full measured metrics.
-- `build-war-results.json`: snapshot of the build-WAR export (paired confirmations, fitted per-slot win models, simulation counts).
+- `build-war-results.json`: snapshot of the build-WAR export (paired confirmations, fitted per-role win models, role census, simulation counts).
 - `*-qa.json`, `test_recommendation_engine.py`, `verify_build_examples.py`: independent checks and evidence.
