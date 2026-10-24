@@ -13826,9 +13826,11 @@
         "role build WAR: pilot-purity-OL-DSFL": 2880,
         "role build WAR: pilot-purity-OL-ISFL": 5040,
         "team interactions: design": 2000000,
-        "team interactions: stack": 200000
+        "team interactions: stack": 200000,
+        "team interactions: dsfl-design": 1200000,
+        "team interactions: dsfl-stack": 100000
       },
-      "total_native_games": 28660680
+      "total_native_games": 29960680
     },
     "portal_tpe_limit": 1700,
     "attribute_order": [
@@ -104910,6 +104912,6 @@
     "engine-data.json": "a74728148ff4b006ba75c8678afd85d5a1c3c2ef298ba1a6fec9659e75c855d5",
     "recommendation_engine.py": "b227afb9ce2f543d4220b3a5bfc8e868d4b1e893f0152059253e085e16a3b144",
     "native-cohort-contrasts.json": "01fa809853454d70b1d08f8e5d7079cd13da42d09f8780657f2fdc042226ef6c",
-    "build-war-results.json": "54fe8f21a3db13be3e9da4f76d6646885031eecd16af86bc03fb87564ee17fa0"
+    "build-war-results.json": "cbde5fbf9f33130fdd202d2c4881782f41b82a8cb355a2abc9a959e0a54ab1c2"
   }
 }
