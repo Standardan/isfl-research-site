@@ -1,0 +1,1 @@
+function t(e,n){return n==null?null:e.find(r=>r.key===n)??null}function y(e,n){var l;if(e.kind!=="player")return e;const r=e.playerKey??((l=e.player)==null?void 0:l.key);return{...e,playerKey:r,player:t(n,r)??void 0}}function a(e){if(e.kind!=="player")return e;const{player:n,...r}=e;return{...r,playerKey:e.playerKey??(n==null?void 0:n.key)}}export{a as k,y as r,t as s};
